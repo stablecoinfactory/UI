@@ -2,12 +2,13 @@
   <div>
     <div class="container mx-auto max-w-7xl px-5">
       <div class="py-8">
-        <price />
         <div
           class="p-6 bg-white rounded-xl shadow-xl hover:shadow-xl transform hover:scale-105 transition duration-500 max-w-4xl mx-auto"
         >
-          <div class="flex items-start space-x-6">
-            <div class="flex bg-gray-100 p-4 space-x-4 rounded-lg w-3/6">
+          <div class="flex flex-col md:flex-row items-start md:space-x-4">
+            <div
+              class="flex bg-gray-100 p-4 my-2 space-x-4 rounded-lg md:w-2/4 w-full"
+            >
               <img src="/img/dollar.png" class="w-8 h-8" />
               <input
                 class="bg-gray-100 outline-none w-full text-xl font-semibold text-gray-700"
@@ -20,41 +21,41 @@
             <div
               v-if="!showusdselect"
               @click="showselect()"
-              class="bg-gray-700 py-5 px-5 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer w-3/6"
+              class="bg-gray-700 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-2/4 w-full"
             >
-              <span>MINT SCF</span>
+              Mint SCF
             </div>
 
             <div
               v-if="showusdselect && !showusdtapproval"
               @click="mintSCFUsingUsdt()"
-              class="bg-blue-600 py-5 px-5 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
+              class="bg-blue-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-1/4 w-full"
             >
-              <span>MINT USING USDT</span>
+              Mint using USDT
             </div>
 
             <div
               v-if="showusdtapproval"
               @click="approveUsdt()"
-              class="bg-green-600 py-5 px-5 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
+              class="bg-green-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-1/4 w-full"
             >
-              <span>Approve USDT</span>
+              Approve USDT
             </div>
 
             <div
               v-if="showusdselect && !showusdcapproval"
               @click="mintSCFUsingUsdc()"
-              class="bg-blue-600 py-5 px-5 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
+              class="bg-blue-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-1/4 w-full"
             >
-              <span>MINT USING USDC</span>
+              Mint using USDC
             </div>
 
             <div
               v-if="showusdcapproval"
               @click="approveUsdc()"
-              class="bg-green-600 py-5 px-5 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer"
+              class="bg-green-600 py-5 my-2 md:py-0 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-1/4 w-full"
             >
-              <span>Approve USDC</span>
+              Approve USDC
             </div>
           </div>
 
@@ -72,40 +73,29 @@
               <span class="font-medium">{{ scfBalance }}</span> SCF
             </div>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="container mx-auto max-w-7xl px-5">
-      <div class="py-10">
-        <div class="flex md:flex-row flex-col items-center">
-          <div class="md:w-1/3 p-5 w-full">
-            <counter
-              title="SCF Balance"
-              color="bg-red-600"
-              v-bind:value="scfBalance"
-            />
-          </div>
-          <div class="md:w-1/3 p-5 w-full">
-            <counter
-              title="SCF Pending"
-              color="bg-blue-600"
-              v-bind:value="pendingBal"
-            />
-          </div>
-
-          <div class="md:w-1/3 p-5 w-full" v-if="pendingTime - timex > 0">
-            <counter
-              title="Unlocking Time"
-              color="bg-green-600"
-              v-bind:value="showTime(pendingTime)"
-            />
+          <div class="w-full bg-gray-200 h-7 mt-6 mb-12">
+            <div
+              class="bg-blue-600 h-7"
+              v-bind:style="`width: ${(showTime(pendingTime) / 100000) * 100}%`"
+            ></div>
+            <div
+              class="mt-2 flex justify-center space-x-8 text-sm text-green-700"
+            >
+              <p class="pt-2 pr-2">
+                <span class="font-medium">{{ pendingBal }}$</span> pending
+              </p>
+              <p class="pt-2 pr-2">
+                <span class="font-medium">{{ showTime(pendingTime) }}</span>
+                seconds left
+              </p>
+            </div>
           </div>
 
           <div
-            class="md:w-1/3 p-5 w-full"
-            v-if="pendingTime - timex < 0 && pendingBal > 0"
+            class="w-full my-6 flex justify-center"
             @click="claimSCF()"
+            v-if="pendingTime - timex < 0 && pendingBal > 0"
           >
             <button
               type="button"
@@ -149,18 +139,12 @@ import {
 
 import { format } from "timeago.js";
 
-import counter from "./counter.vue";
-import price from "./price.vue";
-
 export default {
   name: "UserData",
   props: {
     address: String,
   },
-  components: {
-    counter,
-    price,
-  },
+  components: {},
   data() {
     return {
       timex: 0,
@@ -181,19 +165,19 @@ export default {
       this.showusdselect = true;
     },
     showTime: function (time) {
+      if (parseInt(time) === 0) return 0;
       return format(time * 1000);
     },
     async mintSCFUsingUsdt() {
       const { usdtApproval } = await checkApproval(this.address);
 
-      const { controllerContract } = await setContract();
-
       if (usdtApproval) {
+        const { controllerContractSet } = await setContract();
         const amount = ethers.utils.parseUnits(
           this.depositAmount.toString(),
           6
         );
-        const done = await controllerContract.runUSDT(amount, {
+        const done = await controllerContractSet.runUSDT(amount, {
           gasLimit: 700000,
         });
 
@@ -212,7 +196,7 @@ export default {
       );
 
       console.log(approved);
-
+      await approved.wait();
       this.showusdtapproval = false;
     },
 
@@ -245,7 +229,7 @@ export default {
       );
 
       console.log(approved);
-
+      await approved.wait();
       this.showusdcapproval = false;
     },
 

@@ -2,8 +2,9 @@
   <div>
     <Header :address="address" />
     <Banner />
-    <NoUserData v-if="!showuserpanel" />
 
+    <Price />
+    <NoUserData v-if="!showuserpanel" />
     <UserData v-bind:address="address" v-if="showuserpanel" />
 
     <Platfrom />
@@ -23,6 +24,7 @@ import Header from "./components/Header.vue";
 import Howitworks from "./components/howitworks.vue";
 import Banner from "./components/banner.vue";
 import FAQs from "./components/faqs.vue";
+import Price from "./components/price.vue";
 
 import detectEthereumProvider from "@metamask/detect-provider";
 
@@ -44,6 +46,7 @@ export default {
     Howitworks,
     Banner,
     FAQs,
+    Price,
   },
 
   async mounted() {

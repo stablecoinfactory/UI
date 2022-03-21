@@ -35,23 +35,25 @@ const usdcContract = new ethers.Contract(USDC, tokenabi, provider);
 //check approval
 
 async function checkApproval(userAddress) {
-  var controller_approved_usdt = await usdtContract.allowance(
+  const controllerUsdtApproved = await usdtContract.allowance(
     userAddress,
     controllerAddress
   );
-  var controller_approved_usdc = await usdcContract.allowance(
+  const controllerUsdcApproved = await usdcContract.allowance(
     userAddress,
     controllerAddress
   );
 
+  const million = ethers.BigNumber.from("1000000");
+
   return {
-    usdt_approval: controller_approved_usdt.gt(1_000_000),
-    usdc_approval: controller_approved_usdc.gt(1_000_000),
+    usdtApproval: controllerUsdtApproved.gt(million),
+    usdcApproval: controllerUsdcApproved.gt(million),
   };
 }
 
-function formatEth(var1, digit) {
-  return ethers.utils.formatUnits(var1, digit);
+function formatEth(val, digit) {
+  return ethers.utils.formatUnits(val, digit);
 }
 
 async function setContract() {

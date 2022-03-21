@@ -1,0 +1,149 @@
+<template>
+  <div class="container mx-auto max-w-7xl px-5">
+    <div class="py-10">
+      <div class="flex flex-col md:flex-row flex-wrap items-center">
+        <div class="sm:w-1/2 lg:w-2/4 p-5 w-full">
+          <counter2
+            title="Circulating Supply"
+            color="gray"
+            v-bind:value="tokensupply"
+            suffix="SCF"
+          />
+        </div>
+
+        <div class="sm:w-1/2 lg:w-1/4 p-5 w-full">
+          <counter2
+            title="Lockup Time"
+            color="red"
+            v-bind:value="showTime(mult * 90000)"
+            suffix="mins"
+          />
+        </div>
+
+        <div class="sm:w-1/2 lg:w-1/4 p-5 w-full">
+          <counter2
+            title="Mint Bonus"
+            color="red"
+            v-bind:value="mult"
+            suffix="%"
+          />
+        </div>
+
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+          <counter2
+            title="USDT Locked"
+            color="blue"
+            v-bind:value="usdtStacked"
+            suffix="$"
+          />
+        </div>
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+          <counter2
+            title="USDT Lent"
+            color="blue"
+            v-bind:value="usdtLend"
+            suffix="$"
+          />
+        </div>
+
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+          <counter2
+            title="USDT Interest"
+            color="blue"
+            v-bind:value="usdtInterest"
+            suffix="$"
+          />
+        </div>
+
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+          <counter2
+            title="USDC Locked"
+            color="green"
+            v-bind:value="usdcStacked"
+            suffix="$"
+          />
+        </div>
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+          <counter2
+            title="USDC Lent"
+            color="green"
+            v-bind:value="usdcLend"
+            suffix="$"
+          />
+        </div>
+
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+          <counter2
+            title="USDC Interest"
+            color="green"
+            v-bind:value="usdcInterest"
+            suffix="$"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import {
+  controllerContract,
+  scfContract,
+  formatEth,
+  aUsdtContract,
+  aUsdcContract,
+  controllerAddress,
+  USDT,
+  USDC,
+} from "../func.js";
+
+import counter2 from "./counter2.vue";
+
+export default {
+  name: "Platfrom",
+
+  data() {
+    return {
+      mult: 0,
+      tokensupply: 0,
+      usdcStacked: 0,
+      usdcLend: 0,
+      usdtStacked: 0,
+      usdtLend: 0,
+      usdtInterest: 0,
+      usdcInterest: 0,
+    };
+  },
+
+  components: {
+    counter2,
+  },
+  methods: {
+    showTime: function (time) {
+      return parseInt(time / 60);
+    },
+  },
+
+  async mounted() {
+    this.mult = await controllerContract.MULT();
+
+    const tokensupply = await scfContract.totalSupply();
+    this.tokensupply = parseFloat(formatEth(tokensupply, 18)).toFixed(4);
+
+    const usdtLend = await aUsdtContract.balanceOf(controllerAddress);
+    this.usdtLend = parseFloat(usdtLend / 1000000).toFixed(4);
+
+    const usdcLend = await aUsdcContract.balanceOf(controllerAddress);
+    this.usdcLend = parseFloat(usdcLend / 1000000).toFixed(4);
+
+    const usdtStacked = await controllerContract.LOCKED(USDT);
+    this.usdtStacked = parseFloat(usdtStacked / 1000000).toFixed(4);
+
+    const usdcStacked = await controllerContract.LOCKED(USDC);
+    this.usdcStacked = parseFloat(usdcStacked / 1000000).toFixed(4);
+
+    this.usdtInterest = parseFloat(this.usdtLend - this.usdtStacked).toFixed(4);
+    this.usdcInterest = parseFloat(this.usdcLend - this.usdcStacked).toFixed(4);
+  },
+};
+</script>

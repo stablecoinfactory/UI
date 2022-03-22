@@ -1,24 +1,25 @@
 <template>
-  <div class="shadow-lg rounded-2xl p-4 bg-white">
+  <div
+    class="border-2 rounded-xl p-4"
+    v-bind:class="'bg-' + color + '-100' + ' border-' + color + '-200'"
+  >
     <div class="flex items-center">
       <span
-        class="p-2 h-4 w-4 rounded-full relative"
-        v-bind:class="color"
+        class="h-4 w-4 rounded-full relative"
+        v-bind:class="'bg-' + color + '-500'"
       ></span>
-      <p class="font-semibold text-xl text-gray-700 ml-2">
+      <p class="text-lg text-gray-700 ml-3 font-semibold">
         {{ title }}
       </p>
     </div>
     <div class="flex flex-col justify-start">
-      <p class="text-gray-800 text-4xl text-left font-bold my-4">
+      <p
+        class="text-4xl text-left font-bold my-4"
+        v-bind:class="'text-' + color + '-700'"
+      >
         {{ value }}
+        <span class="text-2xl">{{ suffix }}</span>
       </p>
-      <div class="relative h-2 bg-gray-200 rounded">
-        <div
-          class="absolute top-0 h-2 left-0 rounded w-full"
-          v-bind:class="color"
-        ></div>
-      </div>
     </div>
   </div>
 </template>
@@ -26,6 +27,6 @@
 <script>
 export default {
   name: "Counter",
-  props: ["title", "value", "color"],
+  props: ["title", "value", "color", "suffix"],
 };
 </script>

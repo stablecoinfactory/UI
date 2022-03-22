@@ -3,7 +3,7 @@
     <div class="py-10">
       <div class="flex flex-col md:flex-row flex-wrap items-center">
         <div class="sm:w-1/2 lg:w-2/4 p-5 w-full">
-          <counter2
+          <counter
             title="Circulating Supply"
             color="gray"
             v-bind:value="tokensupply"
@@ -12,7 +12,7 @@
         </div>
 
         <div class="sm:w-1/2 lg:w-1/4 p-5 w-full">
-          <counter2
+          <counter
             title="Lockup Time"
             color="red"
             v-bind:value="showTime(mult * 90000)"
@@ -21,7 +21,7 @@
         </div>
 
         <div class="sm:w-1/2 lg:w-1/4 p-5 w-full">
-          <counter2
+          <counter
             title="Mint Bonus"
             color="red"
             v-bind:value="mult"
@@ -30,7 +30,7 @@
         </div>
 
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
-          <counter2
+          <counter
             title="USDT Locked"
             color="blue"
             v-bind:value="usdtStacked"
@@ -38,7 +38,7 @@
           />
         </div>
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
-          <counter2
+          <counter
             title="USDT Lent"
             color="blue"
             v-bind:value="usdtLend"
@@ -47,7 +47,7 @@
         </div>
 
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
-          <counter2
+          <counter
             title="USDT Interest"
             color="blue"
             v-bind:value="usdtInterest"
@@ -56,7 +56,7 @@
         </div>
 
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
-          <counter2
+          <counter
             title="USDC Locked"
             color="green"
             v-bind:value="usdcStacked"
@@ -64,7 +64,7 @@
           />
         </div>
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
-          <counter2
+          <counter
             title="USDC Lent"
             color="green"
             v-bind:value="usdcLend"
@@ -73,7 +73,7 @@
         </div>
 
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
-          <counter2
+          <counter
             title="USDC Interest"
             color="green"
             v-bind:value="usdcInterest"
@@ -97,7 +97,7 @@ import {
   USDC,
 } from "../func.js";
 
-import counter2 from "./counter2.vue";
+import counter from "./counter.vue";
 
 export default {
   name: "Platfrom",
@@ -116,7 +116,7 @@ export default {
   },
 
   components: {
-    counter2,
+    counter,
   },
   methods: {
     showTime: function (time) {

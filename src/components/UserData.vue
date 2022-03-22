@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-gray-100 py-20">
     <div class="container mx-auto max-w-7xl px-5">
       <div class="py-8">
         <div
@@ -53,7 +53,7 @@
             <div
               v-if="showusdcapproval"
               @click="approveUsdc()"
-              class="bg-green-600 py-5 my-2 md:py-0 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-1/4 w-full"
+              class="bg-green-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-1/4 w-full"
             >
               Approve USDC
             </div>
@@ -64,30 +64,36 @@
             role="alert"
           >
             <div>
-              <span class="font-medium">{{ usdtBalance }}</span> USDT
+              <span class="font-medium">{{ usdtBalance }}</span>
+              USDT
             </div>
             <div>
-              <span class="font-medium">{{ usdcBalance }}</span> USDC
+              <span class="font-medium">{{ usdcBalance }}</span>
+              USDC
             </div>
             <div>
-              <span class="font-medium">{{ scfBalance }}</span> SCF
+              <span class="font-medium">{{ scfBalance }}</span>
+              SCF
             </div>
           </div>
 
-          <div class="w-full bg-gray-200 h-7 mt-6 mb-12">
+          <div class="w-full bg-gray-200 h-7 mt-6 mb-12" v-if="pendingBal > 1">
             <div
               class="bg-blue-600 h-7"
-              v-bind:style="`width: ${(showTime(pendingTime) / 100000) * 100}%`"
+              v-bind:style="`width: ${
+                ((pendingTime - timex) / 1000000) * 100
+              }%`"
             ></div>
             <div
               class="mt-2 flex justify-center space-x-8 text-sm text-green-700"
             >
               <p class="pt-2 pr-2">
-                <span class="font-medium">{{ pendingBal }}$</span> pending
+                <span class="font-medium">{{ pendingBal }}$</span>
+                pending
               </p>
               <p class="pt-2 pr-2">
+                Claimable
                 <span class="font-medium">{{ showTime(pendingTime) }}</span>
-                seconds left
               </p>
             </div>
           </div>
@@ -126,7 +132,7 @@
 </template>
 
 <script>
-import { ethers } from "ethers";
+import { ethers } from 'ethers'
 import {
   controllerContract,
   controllerAddress,
@@ -135,12 +141,12 @@ import {
   setContract,
   MAX_ALLOWANCE,
   checkApproval,
-} from "../func.js";
+} from '../func.js'
 
-import { format } from "timeago.js";
+import { format } from 'timeago.js'
 
 export default {
-  name: "UserData",
+  name: 'UserData',
   props: {
     address: String,
   },
@@ -154,115 +160,108 @@ export default {
       showusdselect: false,
       showusdtapproval: false,
       showusdcapproval: false,
-      showUSD: "Fetching..",
+      showUSD: 'Fetching..',
       usdtBalance: 0,
       usdcBalance: 0,
       scfBalance: 0,
-    };
+    }
   },
   methods: {
     showselect: function () {
-      this.showusdselect = true;
+      this.showusdselect = true
     },
     showTime: function (time) {
-      if (parseInt(time) === 0) return 0;
-      return format(time * 1000);
+      return format(time * 1000)
     },
     async mintSCFUsingUsdt() {
-      const { usdtApproval } = await checkApproval(this.address);
+      const { usdtApproval } = await checkApproval(this.address)
 
       if (usdtApproval) {
-        const { controllerContractSet } = await setContract();
-        const amount = ethers.utils.parseUnits(
-          this.depositAmount.toString(),
-          6
-        );
+        const { controllerContractSet } = await setContract()
+        const amount = ethers.utils.parseUnits(this.depositAmount.toString(), 6)
         const done = await controllerContractSet.runUSDT(amount, {
           gasLimit: 700000,
-        });
+        })
 
-        console.log(done);
+        console.log(done)
       } else {
-        this.showusdtapproval = true;
+        this.showusdtapproval = true
       }
     },
 
     async approveUsdt() {
-      const { usdtContract } = await setContract();
+      const { usdtContract } = await setContract()
 
       const approved = await usdtContract.approve(
         controllerAddress,
-        MAX_ALLOWANCE
-      );
+        MAX_ALLOWANCE,
+      )
 
-      console.log(approved);
-      await approved.wait();
-      this.showusdtapproval = false;
+      console.log(approved)
+      await approved.wait()
+      this.showusdtapproval = false
     },
 
     async mintSCFUsingUsdc() {
-      const { usdcApproval } = await checkApproval(this.address);
+      const { usdcApproval } = await checkApproval(this.address)
 
-      const { controllerContractSet } = await setContract();
+      const { controllerContractSet } = await setContract()
 
       if (usdcApproval) {
-        const amount = ethers.utils.parseUnits(
-          this.depositAmount.toString(),
-          6
-        );
+        const amount = ethers.utils.parseUnits(this.depositAmount.toString(), 6)
         const done = await controllerContractSet.runUSDC(amount, {
           gasLimit: 700000,
-        });
+        })
 
-        console.log(done);
+        console.log(done)
       } else {
-        this.showusdcapproval = true;
+        this.showusdcapproval = true
       }
     },
 
     async approveUsdc() {
-      const { usdcContract } = await setContract();
+      const { usdcContract } = await setContract()
 
       const approved = await usdcContract.approve(
         controllerAddress,
-        MAX_ALLOWANCE
-      );
+        MAX_ALLOWANCE,
+      )
 
-      console.log(approved);
-      await approved.wait();
-      this.showusdcapproval = false;
+      console.log(approved)
+      await approved.wait()
+      this.showusdcapproval = false
     },
 
     async claimSCF() {
-      const { controllerContract } = await setContract();
+      const { controllerContract } = await setContract()
 
       const claimed = await controllerContract.claim({
         gasLimit: 700000,
-      });
+      })
 
-      console.log(claimed);
+      console.log(claimed)
     },
   },
   async mounted() {
-    const addr = this.address;
+    const addr = this.address
 
-    const unixTime = Math.round(new Date().getTime() / 1000);
-    this.timex = unixTime;
+    const unixTime = Math.round(new Date().getTime() / 1000)
+    this.timex = unixTime
 
-    const pendingBal = await controllerContract.pendingBal(addr);
-    this.pendingBal = parseFloat(formatEth(pendingBal, 18)).toFixed(4);
+    const pendingBal = await controllerContract.pendingBal(addr)
+    this.pendingBal = parseFloat(formatEth(pendingBal, 18)).toFixed(4)
 
-    const pendingTime = await controllerContract.pendingTime(addr);
-    this.pendingTime = pendingTime;
+    const pendingTime = await controllerContract.pendingTime(addr)
+    this.pendingTime = parseInt(pendingTime)
 
-    const { usdtContract, usdcContract } = await setContract();
-    const usdtBalance = await usdtContract.balanceOf(addr);
-    const usdcBalance = await usdcContract.balanceOf(addr);
-    const scfBalance = await scfContract.balanceOf(addr);
+    const { usdtContract, usdcContract } = await setContract()
+    const usdtBalance = await usdtContract.balanceOf(addr)
+    const usdcBalance = await usdcContract.balanceOf(addr)
+    const scfBalance = await scfContract.balanceOf(addr)
 
-    this.usdtBalance = parseFloat(formatEth(usdtBalance, 6)).toFixed(4);
-    this.usdcBalance = parseFloat(formatEth(usdcBalance, 6)).toFixed(4);
-    this.scfBalance = parseFloat(formatEth(scfBalance, 18)).toFixed(4);
+    this.usdtBalance = parseFloat(formatEth(usdtBalance, 6)).toFixed(4)
+    this.usdcBalance = parseFloat(formatEth(usdcBalance, 6)).toFixed(4)
+    this.scfBalance = parseFloat(formatEth(scfBalance, 18)).toFixed(4)
   },
-};
+}
 </script>

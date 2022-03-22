@@ -1,29 +1,35 @@
 {
-  "name": "monkey",
-  "version": "0.1.0",
+  "name": "ui",
+  "version": "1.1.0",
   "private": true,
+  "description": "ui",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@lottiefiles/lottie-player": "^1.5.4",
     "@metamask/detect-provider": "^1.2.0",
-    "@uniswap/v3-sdk": "^3.8.2",
-    "axios": "^0.26.1",
-    "core-js": "^3.6.5",
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "@vue/cli-plugin-babel": "4.1.1",
+    "autoprefixer": "^9",
+    "axios": "^0.25.0",
     "ethers": "^5.6.1",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
     "timeago.js": "^4.0.2",
-    "vue": "^3.0.0"
+    "vue": "^2.6.11",
+    "vue-router": "^3.2.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.15",
-    "@vue/cli-plugin-eslint": "~4.5.15",
-    "@vue/cli-service": "~4.5.15",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
+    "@vue/cli-plugin-eslint": "4.1.1",
+    "@vue/cli-plugin-router": "^4.5.15",
+    "@vue/cli-service": "4.1.1",
+    "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-vue": "^6.0.1",
+    "vue-cli-plugin-tailwind": "~2.2.18",
+    "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
     "root": true,
@@ -31,17 +37,28 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/vue3-essential",
+      "plugin:vue/essential",
       "eslint:recommended"
     ],
+    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
-    },
-    "rules": {}
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not dead"
+    "not ie <= 8"
+  ],
+  "keywords": [
+    "vue",
+    "vuejs",
+    "starter"
   ]
 }

@@ -1,32 +1,30 @@
 <template>
-  <div>
-    <section class="container mx-auto max-w-7xl px-5 py-24">
-      <h2 class="text-5xl font-extrabold leading-9 text-center pb-20">
-        Frequently Asked Questions
-      </h2>
+  <section class="container mx-auto max-w-7xl px-5 py-24">
+    <h2 class="text-5xl font-extrabold leading-9 text-center pb-20">
+      Frequently Asked Questions
+    </h2>
 
-      <div v-for="item in faqs" :key="item.id">
-        <div class="py-2">
-          <h2>
-            <button
-              type="button"
-              class="flex justify-between items-center p-5 w-full font-medium text-left text-gray-900 rounded-t-xl border border-b-0 border-gray-200 border-gray-700 text-white bg-gray-700 hover:bg-gray-900"
-              @click="toggleAccordion(item.id)"
-            >
-              <span>{{ item.title }}</span>
-            </button>
-          </h2>
-          <div v-bind:class="isOpen[item.id] ? '' : 'hidden'">
-            <div class="shadow-xs p-4 border rounded-b-xl bg-white">
-              <p class="mb-2 text-gray-700">
-                <span v-html="item.desc"></span>
-              </p>
-            </div>
+    <div v-for="item in faqs" :key="item.id">
+      <div class="py-2">
+        <h2>
+          <button
+            type="button"
+            class="flex justify-between items-center p-5 w-full font-medium text-left text-gray-900 rounded-t-xl border border-b-0 border-gray-200 border-gray-700 text-white bg-gray-700 hover:bg-gray-900"
+            @click="toggleAccordion(item.id)"
+          >
+            <span>{{ item.title }}</span>
+          </button>
+        </h2>
+        <div v-bind:class="isOpen[item.id] ? '' : 'hidden'">
+          <div class="shadow-xs p-4 border rounded-b-xl bg-white">
+            <p class="mb-2 text-gray-700">
+              <span v-html="item.desc"></span>
+            </p>
           </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>

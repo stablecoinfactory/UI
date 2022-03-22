@@ -1,66 +1,56 @@
 <template>
   <div>
-    <div class="container mx-auto max-w-7xl px-5">
-      <div class="py-10">
-        <div class="flex md:flex-row flex-col items-center">
-          <div class="md:w-1/2 p-5">
-            <h1
-              class="text-dark font-extrabold text-4xl sm:text-[42px] lg:text-[40px] xl:text-[60px] leading-snug mb-3"
+    <section class="py-16 px-2 pt-32 bg-white md:px-0">
+      <div
+        class="container items-center max-w-4xl px-5 mx-auto space-y-6 text-center"
+      >
+        <h1
+          class="text-4xl font-extrabold tracking-tight text-left text-gray-900 sm:text-5xl md:text-6xl md:text-center"
+        >
+          <span class="block uppercase">
+            Stable Coin
+            <span class="block mt-1 text-purple-500 lg:inline lg:mt-0">
+              Factory
+            </span>
+          </span>
+        </h1>
+        <p
+          class="w-full mx-auto text-base text-left text-gray-500 md:max-w-md sm:text-lg lg:text-2xl md:max-w-3xl md:text-center"
+        >
+          algorithmic approach to lend your assets to AAVE & Uniswap, giving
+          high returns without farming.
+        </p>
+        <div
+          class="relative flex flex-col justify-center md:flex-row md:space-x-4"
+        >
+          <a
+            href="https://info.uniswap.org/#/polygon/tokens/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
+            class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-purple-500 rounded-md md:mb-0 hover:bg-purple-700 md:w-auto"
+          >
+            UNISWAP
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 ml-1"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
-              Get Higher APY with
-              <span class="text-blue-800">Stable Coin Factory.</span>
-            </h1>
-            <p class="mb-8 text-body-color max-w-[480px] text-lg">
-              With TailGrids, business and students thrive together. Business
-              can perfectly match their staffing to changing demand throughout
-              the dayed.
-            </p>
-
-             <div class="clients pt-8">
-              <div class="flex justify-center">
-                <a
-                  class="w-1/2 py-3 mr-4"
-                  href="https://polygonscan.com/address/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
-                  target="_blank"
-                >
-                  <img src="/img/polyscan.png" alt="ayroui" />
-                </a>
-              </div>
-              <div class="flex items-center">
-                <a
-                  class="w-full py-3 mr-4"
-                  href="https://matcha.xyz/markets/137/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
-                  target="_blank"
-                >
-                  <img src="/img/matcha.png" alt="ayroui" />
-                </a>
-                <a
-                  class="w-full py-3 mr-4"
-                  href="https://info.uniswap.org/#/polygon/tokens/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
-                  target="_blank"
-                >
-                  <img src="/img/uniswap.png" alt="uideck" />
-                </a>
-              </div>
-            </div>
-
-
-          </div>
-
-          <div class="md:w-1/2 p-5">
-            <lottie-player
-              class="object-cover object-center"
-              autoplay=""
-              loop=""
-              mode="normal"
-              src="
-              https://assets9.lottiefiles.com/private_files/lf30_sbi9rz2o.json"
-              background="transparent"
-            ></lottie-player>
-          </div>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a
+            href="https://polygonscan.com/address/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
+            class="flex items-center px-6 py-3 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-600"
+          >
+            polygonscan
+          </a>
         </div>
       </div>
-    </div>
+    </section>
 
     <Price />
 

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div
-      class="container mx-auto flex flex-col flex-wrap items-center justify-between py-10 md:flex-row uppercase"
+      class="container mx-auto flex flex-col flex-wrap items-center justify-between py-10 md:flex-row uppercase text-2xl"
     >
       <div class="relative flex flex-col md:flex-row">
         <router-link
@@ -9,7 +9,7 @@
           class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0"
         >
           <span
-            class="mx-auto text-xl font-black leading-none text-gray-900 select-none"
+            class="mx-auto  font-black leading-none text-gray-900 select-none"
           >
             STABLE COIN FACTORY
           </span>
@@ -66,7 +66,6 @@
 
     <UserData
       v-bind:address="address"
-      v-bind:web3on="showuserpanel"
       v-if="isDapp && showuserpanel"
     />
 

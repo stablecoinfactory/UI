@@ -43,10 +43,10 @@
             </svg>
           </a>
           <a
-            href="https://polygonscan.com/token/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
+            href="https://info.uniswap.org/#/polygon/tokens/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
             class="flex items-center px-6 py-3 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-600"
           >
-            polygonscan
+            Uniswap Chart
           </a>
         </div>
       </div>

@@ -60,7 +60,7 @@
           </div>
 
           <div
-            class="flex justify-center space-x-8 mt-4 p-2 text-sm text-green-700 rounded-lg"
+            class="flex justify-center space-x-8 mt-4 p-2 text-sm text-green-700 rounded-lg  text-xl"
             role="alert"
           >
             <div>
@@ -87,11 +87,11 @@
             <div
               class="mt-2 flex justify-center space-x-8 text-sm text-green-700"
             >
-              <p class="pt-2 pr-2">
-                <span class="font-medium">{{ pendingBal }}$</span>
+              <p class="pt-2 pr-2  text-xl">
+                <span class="font-medium">{{ pendingBal }}</span>
                 pending
               </p>
-              <p class="pt-2 pr-2">
+              <p class="pt-2 pr-2  text-xl">
                 Claimable
                 <span class="font-medium">{{ showTime(pendingTime) }}</span>
               </p>

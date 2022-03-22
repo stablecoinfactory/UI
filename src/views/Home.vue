@@ -4,12 +4,47 @@
       <div class="py-10">
         <div class="flex md:flex-row flex-col items-center">
           <div class="md:w-1/2 p-5">
-            <p class="text-3xl font-bold uppercase">
+            <h1
+              class="text-dark font-extrabold text-4xl sm:text-[42px] lg:text-[40px] xl:text-[60px] leading-snug mb-3"
+            >
               Get Higher APY with
+              <span class="text-blue-800">Stable Coin Factory.</span>
+            </h1>
+            <p class="mb-8 text-body-color max-w-[480px] text-lg">
+              With TailGrids, business and students thrive together. Business
+              can perfectly match their staffing to changing demand throughout
+              the dayed.
             </p>
-            <p class="text-7xl font-bold uppercase text-red-400">
-              Stable Coin Factory
-            </p>
+
+             <div class="clients pt-8">
+              <div class="flex justify-center">
+                <a
+                  class="w-1/2 py-3 mr-4"
+                  href="https://polygonscan.com/address/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
+                  target="_blank"
+                >
+                  <img src="/img/polyscan.png" alt="ayroui" />
+                </a>
+              </div>
+              <div class="flex items-center">
+                <a
+                  class="w-full py-3 mr-4"
+                  href="https://matcha.xyz/markets/137/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
+                  target="_blank"
+                >
+                  <img src="/img/matcha.png" alt="ayroui" />
+                </a>
+                <a
+                  class="w-full py-3 mr-4"
+                  href="https://info.uniswap.org/#/polygon/tokens/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
+                  target="_blank"
+                >
+                  <img src="/img/uniswap.png" alt="uideck" />
+                </a>
+              </div>
+            </div>
+
+
           </div>
 
           <div class="md:w-1/2 p-5">

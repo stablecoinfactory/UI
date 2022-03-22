@@ -56,7 +56,7 @@
           <router-link
             v-if="!isDapp"
             to="dapp"
-            class="flex items-center w-full px-6 py-3 mb-3 text-xl text-white bg-red-400 rounded-md md:mb-0 hover:bg-red-700 md:w-auto"
+            class="flex items-center w-full px-6 py-3 mb-3 text-xl text-white bg-gray-600 rounded-md md:mb-0 hover:bg-red-500 md:w-auto"
           >
             DAPP
           </router-link>

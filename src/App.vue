@@ -1,57 +1,61 @@
 <template>
   <div id="app">
-    <div class="bg-white">
-      <div
-        class="container mx-auto flex flex-col flex-wrap items-center justify-between py-5 md:flex-row uppercase"
-      >
-        <div class="inline-flex items-center ml-5 space-x-6">
-          <nav
-            class="flex flex-wrap items-center mb-5 text-xl text-gray-600 hover:text-gray-900"
+    <div
+      class="container mx-auto flex flex-col flex-wrap items-center justify-between py-5 md:flex-row h-40"
+    >
+      <div class="inline-flex items-center ml-5 space-x-6">
+        <nav
+          class="flex flex-wrap items-center mb-5 text-xl text-gray-600 hover:text-gray-900 text-gradient"
+        >
+          <router-link
+            to="/"
+            class="mr-10 font-bold leading-6 text-3xl text-gray-900"
           >
-            <router-link to="/" class="mr-10 font-bold leading-6">
-              STABLE COIN FACTORY
-            </router-link>
-            <router-link to="/faq" class="mr-5 font-medium leading-6">
-              FAQ
-            </router-link>
-            <router-link to="/contact" class="mr-5 font-medium leading-6">
-              CONTACT
-            </router-link>
-          </nav>
-        </div>
+            STABLE COIN FACTORY
+          </router-link>
+          <router-link to="/faq" class="mr-5 font-medium leading-6 underline">
+            FAQs
+          </router-link>
+          <router-link
+            to="/contact"
+            class="mr-5 font-medium leading-6 underline"
+          >
+            Contact
+          </router-link>
+        </nav>
+      </div>
 
-        <div class="inline-flex items-center ml-5 space-x-6 lg:justify-end">
-          <nav class="flex flex-wrap items-center mb-5 text-xl">
-            <div
-              v-if="isDapp"
-              class="inline-flex items-center leading-none rounded-full p-2 text-teal text-sm hidden md:block"
+      <div class="inline-flex items-center ml-5 space-x-6 lg:justify-end">
+        <nav class="flex flex-wrap items-center mb-5 text-xl">
+          <div
+            v-if="isDapp"
+            class="inline-flex items-center leading-none rounded-full p-2 text-teal text-sm hidden md:block"
+          >
+            <span
+              class="inline-flex bg-gray-700 text-white rounded-full h-6 px-3 justify-center items-center"
             >
-              <span
-                class="inline-flex bg-gray-700 text-white rounded-full h-6 px-3 justify-center items-center"
-              >
-                POLYGON
-              </span>
-              <span v-if="address" class="inline-flex px-2 text-gray-700">
-                {{ address }}
-              </span>
-            </div>
+              POLYGON
+            </span>
+            <span v-if="address" class="inline-flex px-2 text-gray-700">
+              {{ address }}
+            </span>
+          </div>
 
-            <a
-              href="https://t.me/scftg"
-              v-if="!isDapp"
-              class="ml-5 w-full px-3 py-2 mb-3 text-white bg-gray-600 rounded-md md:w-auto"
-            >
-              TELEGRAM
-            </a>
-            <router-link
-              v-if="!isDapp"
-              to="dapp"
-              class="ml-5 w-full px-3 py-2 mb-3 text-white bg-gray-600 rounded-md md:w-auto"
-            >
-              DAPP
-            </router-link>
-          </nav>
-        </div>
+          <router-link
+            to="dapp"
+            v-if="!isDapp"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-semibold rounded-full text-sm px-5 py-3 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Go to DApp
+          </router-link>
+          <a
+            v-if="!isDapp"
+            href="https://t.me/scftg"
+            class="py-3 px-5 mr-2 mb-2 text-sm font-semibold text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          >
+            Telegram
+          </a>
+        </nav>
       </div>
     </div>
 
@@ -88,19 +92,19 @@
 </template>
 
 <script>
-import detectEthereumProvider from '@metamask/detect-provider'
-import UserData from '@/components/UserData.vue'
+import detectEthereumProvider from "@metamask/detect-provider";
+import UserData from "@/components/UserData.vue";
 
 export default {
   data() {
     return {
-      address: '',
+      address: "",
       showuserpanel: false,
-    }
+    };
   },
   computed: {
     isDapp() {
-      return this.$route.name === 'Dapp'
+      return this.$route.name === "Dapp";
     },
   },
   components: {
@@ -108,42 +112,18 @@ export default {
   },
   async mounted() {
     try {
-      const provider = await detectEthereumProvider()
+      const provider = await detectEthereumProvider();
       if (provider) {
-        this.metamask = true
+        this.metamask = true;
         const accounts = await window.ethereum.request({
-          method: 'eth_requestAccounts',
-        })
-        this.address = accounts[0]
-        this.showuserpanel = true
+          method: "eth_requestAccounts",
+        });
+        this.address = accounts[0];
+        this.showuserpanel = true;
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   },
-}
+};
 </script>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-body {
-  font-family: 'Work Sans', sans-serif;
-  background-color: #ffffff;
-  opacity: 1;
-  background-image: repeating-radial-gradient(
-      circle at 0 0,
-      transparent 0,
-      #ffffff 10px
-    ),
-    repeating-linear-gradient(#f7f7f755, #f7f7f7);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Merriweather', serif;
-}
-</style>

@@ -1,8 +1,8 @@
 <template>
   <div>
     <section class="container mx-auto max-w-7xl px-5 py-24">
-      <h2 class="text-5xl font-extrabold leading-9 text-center pb-20">
-        HOW IT WORKS
+      <h2 class="mb-16 text-xl font-extrabold md:text-4xl text-center">
+        How it works
       </h2>
 
       <section class="grid lg:grid-cols-3 grid-cols-1 gap-10 antialiased">

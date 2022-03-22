@@ -1,14 +1,12 @@
 <template>
-  <div class="bg-gray-100 py-20">
+  <div>
     <div class="container mx-auto max-w-7xl px-5">
       <div class="py-8">
         <div
-          class="p-6 bg-white rounded-xl shadow-xl hover:shadow-xl transform hover:scale-105 transition duration-500 max-w-4xl mx-auto"
+          class="p-6 bg-white rounded-xl shadow-xl hover:shadow-xl transform hover:scale-105 transition duration-500 max-w-3xl mx-auto"
         >
-          <div class="flex flex-col md:flex-row items-start md:space-x-4">
-            <div
-              class="flex bg-gray-100 p-4 my-2 space-x-4 rounded-lg md:w-2/4 w-full"
-            >
+          <div class="flex flex-col items-start">
+            <div class="flex bg-gray-100 p-4 my-2 space-x-4 rounded-lg w-full">
               <img src="/img/dollar.png" class="w-8 h-8" />
               <input
                 class="bg-gray-100 outline-none w-full text-xl font-semibold text-gray-700"
@@ -21,41 +19,43 @@
             <div
               v-if="!showusdselect"
               @click="showselect()"
-              class="bg-gray-700 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-2/4 w-full"
+              class="bg-gray-700 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer w-full"
             >
               Mint SCF
             </div>
 
-            <div
-              v-if="showusdselect && !showusdtapproval"
-              @click="mintSCFUsingUsdt()"
-              class="bg-blue-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-1/4 w-full"
-            >
-              Mint using USDT
-            </div>
+            <div class="w-full flex space-x-4">
+              <div
+                v-if="showusdselect && !showusdtapproval"
+                @click="mintSCFUsingUsdt()"
+                class="bg-blue-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-2/4 w-full"
+              >
+                Mint using USDT
+              </div>
 
-            <div
-              v-if="showusdtapproval"
-              @click="approveUsdt()"
-              class="bg-green-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-1/4 w-full"
-            >
-              Approve USDT
-            </div>
+              <div
+                v-if="showusdtapproval"
+                @click="approveUsdt()"
+                class="bg-green-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-2/4 w-full"
+              >
+                Approve USDT
+              </div>
 
-            <div
-              v-if="showusdselect && !showusdcapproval"
-              @click="mintSCFUsingUsdc()"
-              class="bg-blue-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-1/4 w-full"
-            >
-              Mint using USDC
-            </div>
+              <div
+                v-if="showusdselect && !showusdcapproval"
+                @click="mintSCFUsingUsdc()"
+                class="bg-blue-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-2/4 w-full"
+              >
+                Mint using USDC
+              </div>
 
-            <div
-              v-if="showusdcapproval"
-              @click="approveUsdc()"
-              class="bg-green-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-1/4 w-full"
-            >
-              Approve USDC
+              <div
+                v-if="showusdcapproval"
+                @click="approveUsdc()"
+                class="bg-green-600 py-5 my-2 text-center text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer md:w-2/4 w-full"
+              >
+                Approve USDC
+              </div>
             </div>
           </div>
 

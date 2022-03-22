@@ -1,61 +1,59 @@
 <template>
   <div id="app">
-  <div
-      class="bg-white"
-    >
+    <div class="bg-white">
+      <div
+        class="container mx-auto flex flex-col flex-wrap items-center justify-between py-5 md:flex-row uppercase"
+      >
+        <div class="inline-flex items-center ml-5 space-x-6">
+          <nav
+            class="flex flex-wrap items-center mb-5 text-xl text-gray-600 hover:text-gray-900"
+          >
+            <router-link to="/" class="mr-10 font-bold leading-6">
+              STABLE COIN FACTORY
+            </router-link>
+            <router-link to="/faq" class="mr-5 font-medium leading-6">
+              FAQ
+            </router-link>
+            <router-link to="/contact" class="mr-5 font-medium leading-6">
+              CONTACT
+            </router-link>
+          </nav>
+        </div>
 
-    <div
-      class="container mx-auto flex flex-col flex-wrap items-center justify-between py-5 md:flex-row uppercase"
-    >
-      <div class="inline-flex items-center ml-5 space-x-6 ">
-        <nav class="flex flex-wrap items-center mb-5 text-xl text-gray-600 hover:text-gray-900">
-          <router-link
-            to="/"
-            class="mr-10 font-bold leading-6 "
-          >
-            STABLE COIN FACTORY
-          </router-link>
-          <router-link
-            to="/faq"
-            class="mr-5 font-medium leading-6"
-          >
-            FAQ
-          </router-link>
-          <router-link
-            to="/contact"
-            class="mr-5 font-medium leading-6 "
-          >
-            CONTACT
-          </router-link>
-        </nav>
-      </div>
-
-      <div class="inline-flex items-center ml-5 space-x-6 lg:justify-end">
-        <nav class="flex flex-wrap items-center mb-5 text-xl">
-          <div
-            v-if="isDapp"
-            class="inline-flex items-center leading-none rounded-full p-2 text-teal text-sm hidden md:block"
-          >
-            <span
-              class="inline-flex bg-gray-700 text-white rounded-full h-6 px-3 justify-center items-center"
+        <div class="inline-flex items-center ml-5 space-x-6 lg:justify-end">
+          <nav class="flex flex-wrap items-center mb-5 text-xl">
+            <div
+              v-if="isDapp"
+              class="inline-flex items-center leading-none rounded-full p-2 text-teal text-sm hidden md:block"
             >
-              POLYGON
-            </span>
-            <span v-if="address" class="inline-flex px-2 text-gray-700">
-              {{ address }}
-            </span>
-          </div>
+              <span
+                class="inline-flex bg-gray-700 text-white rounded-full h-6 px-3 justify-center items-center"
+              >
+                POLYGON
+              </span>
+              <span v-if="address" class="inline-flex px-2 text-gray-700">
+                {{ address }}
+              </span>
+            </div>
 
-          <router-link
-            v-if="!isDapp"
-            to="dapp"
-            class="w-full px-6 py-3 mb-3 text-white bg-gray-600 rounded-md  md:w-auto"
-          >
-            DAPP
-          </router-link>
-        </nav>
+            <a
+              href="https://t.me/scftg"
+              v-if="!isDapp"
+              class="ml-5 w-full px-3 py-2 mb-3 text-white bg-gray-600 rounded-md md:w-auto"
+            >
+              TELEGRAM
+            </a>
+            <router-link
+              v-if="!isDapp"
+              to="dapp"
+              class="ml-5 w-full px-3 py-2 mb-3 text-white bg-gray-600 rounded-md md:w-auto"
+            >
+              DAPP
+            </router-link>
+          </nav>
+        </div>
       </div>
-    </div>   </div>
+    </div>
 
     <UserData v-bind:address="address" v-if="isDapp && showuserpanel" />
 

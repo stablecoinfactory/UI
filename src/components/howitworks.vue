@@ -17,9 +17,8 @@
           </h1>
           <h2 class="font-bold mb-5 text-gray-800 text-xl">Deposit USD</h2>
           <p class="text-sm leading-relaxed text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae
-            repellendus nam! Dolor dignissimos unde, dolore laboriosam atque
-            numquam quam.
+            Mint $SCF token using our protocol, the amount minted by USD stable
+            coin is lent to a lending reserve.
           </p>
         </article>
 
@@ -32,9 +31,8 @@
           <h1 class="font-extrabold text-6xl mt-36 mb-4 text-green-600">02.</h1>
           <h2 class="font-bold mb-5 text-gray-800 text-xl">Lock Funds</h2>
           <p class="text-sm leading-relaxed text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae
-            repellendus nam! Dolor dignissimos unde, dolore laboriosam atque
-            numquam quam.
+            The interest generated is collected in interest reserves which are
+            then used to do token buybacks and burns.
           </p>
         </article>
 
@@ -47,9 +45,8 @@
           <h1 class="font-extrabold text-6xl mt-36 mb-4 text-blue-600">03.</h1>
           <h2 class="font-bold mb-5 text-gray-800 text-xl">Claim Rewards</h2>
           <p class="text-sm leading-relaxed text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae
-            repellendus nam! Dolor dignissimos unde, dolore laboriosam atque
-            numquam quam.
+            Depending on the market condition, the lockup time and rewards are
+            adjusted which keeps protocol in positive cash flow.
           </p>
         </article>
       </section>

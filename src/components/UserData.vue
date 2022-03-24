@@ -146,6 +146,8 @@ import {
   setContract,
   MAX_ALLOWANCE,
   checkApproval,
+  usdtContract,
+  usdcContract,
 } from '../func.js'
 
 import { format } from 'timeago.js'
@@ -183,7 +185,9 @@ export default {
 
       if (usdtApproval) {
         const { controllerContractSet } = await setContract()
+
         const amount = ethers.utils.parseUnits(this.depositAmount.toString(), 6)
+
         const done = await controllerContractSet.runUSDT(amount, {
           gasLimit: 700000,
         })
@@ -191,6 +195,24 @@ export default {
         console.log(done)
       } else {
         this.showusdtapproval = true
+      }
+    },
+
+    async mintSCFUsingUsdc() {
+      const { usdcApproval } = await checkApproval(this.address)
+
+      const { controllerContractSet } = await setContract()
+
+      if (usdcApproval) {
+        const amount = ethers.utils.parseUnits(this.depositAmount.toString(), 6)
+
+        const done = await controllerContractSet.runUSDC(amount, {
+          gasLimit: 700000,
+        })
+
+        console.log(done)
+      } else {
+        this.showusdcapproval = true
       }
     },
 
@@ -203,25 +225,10 @@ export default {
       )
 
       console.log(approved)
+
       await approved.wait()
+
       this.showusdtapproval = false
-    },
-
-    async mintSCFUsingUsdc() {
-      const { usdcApproval } = await checkApproval(this.address)
-
-      const { controllerContractSet } = await setContract()
-
-      if (usdcApproval) {
-        const amount = ethers.utils.parseUnits(this.depositAmount.toString(), 6)
-        const done = await controllerContractSet.runUSDC(amount, {
-          gasLimit: 700000,
-        })
-
-        console.log(done)
-      } else {
-        this.showusdcapproval = true
-      }
     },
 
     async approveUsdc() {
@@ -233,7 +240,9 @@ export default {
       )
 
       console.log(approved)
+
       await approved.wait()
+
       this.showusdcapproval = false
     },
 
@@ -259,7 +268,6 @@ export default {
     const pendingTime = await controllerContract.pendingTime(addr)
     this.pendingTime = parseInt(pendingTime)
 
-    const { usdtContract, usdcContract } = await setContract()
     const usdtBalance = await usdtContract.balanceOf(addr)
     const usdcBalance = await usdcContract.balanceOf(addr)
     const scfBalance = await scfContract.balanceOf(addr)

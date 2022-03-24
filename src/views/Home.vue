@@ -62,25 +62,25 @@
 </template>
 
 <script>
-import Platfrom from "../components/Platfrom.vue";
+import Platfrom from '../components/Platfrom.vue'
 
-import Howitworks from "../components/howitworks.vue";
+import Howitworks from '../components/howitworks.vue'
 
-import Price from "../components/price.vue";
+import Price from '../components/dexprice.vue'
 
 export default {
-  name: "Home",
+  name: 'Home',
   data() {
     return {
       metamask: false,
-      address: "",
+      address: '',
       showuserpanel: false,
-    };
+    }
   },
   components: {
     Platfrom,
     Howitworks,
     Price,
   },
-};
+}
 </script>

@@ -74,9 +74,9 @@ async function setContract() {
       return;
     }
 
-    const usdtContract = new ethers.Contract(USDT, tokenabi, signer);
+    const usdtContract_set = new ethers.Contract(USDT, tokenabi, signer);
 
-    const usdcContract = new ethers.Contract(USDC, tokenabi, signer);
+    const usdcContract_set = new ethers.Contract(USDC, tokenabi, signer);
 
     const controllerContractSet = new ethers.Contract(
       controllerAddress,
@@ -85,8 +85,8 @@ async function setContract() {
     );
 
     return {
-      usdcContract,
-      usdtContract,
+      usdcContract_set,
+      usdtContract_set,
       controllerContractSet,
     };
   } catch (err) {

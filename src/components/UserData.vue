@@ -198,7 +198,7 @@ export default {
     },
 
     async approveUsdt() {
-      const { usdtContract } = await setContract();
+      const { usdtContract_set} = await setContract();
 
       const approved = await usdtContract.approve(
         controllerAddress,
@@ -231,7 +231,7 @@ export default {
     },
 
     async approveUsdc() {
-      const { usdcContract } = await setContract();
+      const { usdcContract_set } = await setContract();
 
       const approved = await usdcContract.approve(
         controllerAddress,

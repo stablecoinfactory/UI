@@ -13,14 +13,15 @@
           STABLE COIN FACTORY
         </router-link>
         <div class="mt-4 lg:mt-0">
-          <router-link to="/faq" class="mr-5 font-medium leading-6 underline">
-            FAQs
+          <router-link to="/faq" class="mr-5 font-medium leading-6 ">
+            FAQ
           </router-link>
+
           <router-link
             to="/contact"
-            class="mr-5 font-medium leading-6 underline"
+            class="mr-5 font-medium leading-6 "
           >
-            Contact
+            CONTACT
           </router-link>
         </div>
       </nav>
@@ -40,20 +41,19 @@
           </span>
         </div>
 
- 
         <a
           v-if="!isDapp"
           href="https://t.me/scftg"
           class="py-3 px-5 mr-2 mb-2 text-sm font-semibold text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
         >
-          Telegram
+          TELEGRAM
         </a>
-           <a
+        <a
           v-if="!isDapp"
           href="https://stablecoinfactory.medium.com/"
           class="py-3 px-5 mr-2 mb-2 text-sm font-semibold text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
         >
-          Medium
+          MEDIUM
         </a>
       </nav>
     </div>
@@ -109,27 +109,20 @@ export default {
   components: {
     UserData,
   },
-  watch: {
-    $route: 'listenRoute',
-  },
-  methods: {
-    async listenRoute() {
-      if (this.$route.name === 'Dapp') {
-        try {
-          const provider = await detectEthereumProvider()
-          if (provider) {
-            this.metamask = true
-            const accounts = await window.ethereum.request({
-              method: 'eth_requestAccounts',
-            })
-            this.address = accounts[0]
-            this.showuserpanel = true
-          }
-        } catch (error) {
-          console.log(error)
-        }
+  async mounted() {
+    try {
+      const provider = await detectEthereumProvider()
+      if (provider) {
+        this.metamask = true
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        })
+        this.address = accounts[0]
+        this.showuserpanel = true
       }
-    },
+    } catch (error) {
+      console.log(error)
+    }
   },
 }
 </script>

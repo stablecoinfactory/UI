@@ -53,6 +53,32 @@
       </div>
     </section>
 
+    <section class="bg-white p-10">
+      <div class="container px-8 mx-auto">
+        <div class="flex grid items-center justify-center grid-cols-12 gap-y-8">
+          <div
+            class="flex items-center justify-center col-span-6 md:col-span-3"
+          >
+           
+           <a href="https://matcha.xyz/markets/137/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"> <img src="img/matcha.png" class="block object-contain h-14" /></a>
+          </div>
+          <div
+            class="flex items-center justify-center col-span-6 md:col-span-3"
+          >
+           <a href="https://info.uniswap.org/#/polygon/tokens/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"> <img src="img/uniswap.png" class="block object-contain h-12" /></a>
+          </div>
+          <div
+            class="flex items-center justify-center col-span-6 md:col-span-3"
+          >
+        <a href="https://polygonscan.com/token/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a">    <img src="img/polyscan.png" class="block object-contain h-10" /> </a>
+          </div>
+          <div
+            class="flex items-center justify-center col-span-6 md:col-span-3"
+          ></div>    
+        </div>
+      </div>
+    </section>
+
     <Price />
 
     <Platfrom />

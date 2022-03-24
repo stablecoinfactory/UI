@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <section class="container mx-auto max-w-7xl px-5 py-24">
+  <div class="bg-white">
+    <section class="container  mx-auto max-w-7xl px-5 py-24">
       <h2 class="mb-16 text-xl font-extrabold md:text-4xl text-center">
         How it works
       </h2>

@@ -137,7 +137,7 @@
 </template>
 
 <script>
-import { ethers } from "ethers";
+import { ethers } from 'ethers'
 import {
   controllerContract,
   controllerAddress,
@@ -146,12 +146,12 @@ import {
   setContract,
   MAX_ALLOWANCE,
   checkApproval,
-} from "../func.js";
+} from '../func.js'
 
-import { format } from "timeago.js";
+import { format } from 'timeago.js'
 
 export default {
-  name: "UserData",
+  name: 'UserData',
   props: {
     address: String,
   },
@@ -165,114 +165,108 @@ export default {
       showusdselect: false,
       showusdtapproval: false,
       showusdcapproval: false,
-      showUSD: "Fetching..",
+      showUSD: 'Fetching..',
       usdtBalance: 0,
       usdcBalance: 0,
       scfBalance: 0,
-    };
+    }
   },
   methods: {
     showselect: function () {
-      this.showusdselect = true;
+      this.showusdselect = true
     },
     showTime: function (time) {
-      return format(time * 1000);
+      return format(time * 1000)
     },
     async mintSCFUsingUsdt() {
-      const { usdtApproval } = await checkApproval(this.address);
+      const { usdtApproval } = await checkApproval(this.address)
 
       if (usdtApproval) {
-        const { controllerContractSet } = await setContract();
-        const amount = ethers.utils.parseUnits(
-          this.depositAmount.toString(),
-          6
-        );
+        const { controllerContractSet } = await setContract()
+        const amount = ethers.utils.parseUnits(this.depositAmount.toString(), 6)
         const done = await controllerContractSet.runUSDT(amount, {
           gasLimit: 700000,
-        });
+        })
 
-        console.log(done);
+        console.log(done)
       } else {
-        this.showusdtapproval = true;
+        this.showusdtapproval = true
       }
     },
 
     async approveUsdt() {
-      const { usdtContract_set} = await setContract();
+      const { usdtContract_set } = await setContract()
 
-      const approved = await usdtContract.approve(
+      const approved = await usdtContract_set.approve(
         controllerAddress,
-        MAX_ALLOWANCE
-      );
+        MAX_ALLOWANCE,
+      )
 
-      console.log(approved);
-      await approved.wait();
-      this.showusdtapproval = false;
+      console.log(approved)
+      await approved.wait()
+      this.showusdtapproval = false
     },
 
     async mintSCFUsingUsdc() {
-      const { usdcApproval } = await checkApproval(this.address);
+      const { usdcApproval } = await checkApproval(this.address)
 
-      const { controllerContractSet } = await setContract();
+      const { controllerContractSet } = await setContract()
 
       if (usdcApproval) {
-        const amount = ethers.utils.parseUnits(
-          this.depositAmount.toString(),
-          6
-        );
+        const amount = ethers.utils.parseUnits(this.depositAmount.toString(), 6)
         const done = await controllerContractSet.runUSDC(amount, {
           gasLimit: 700000,
-        });
+        })
 
-        console.log(done);
+        console.log(done)
       } else {
-        this.showusdcapproval = true;
+        this.showusdcapproval = true
       }
     },
 
     async approveUsdc() {
-      const { usdcContract_set } = await setContract();
+      const { usdcContract_set } = await setContract()
 
-      const approved = await usdcContract.approve(
+      const approved = await usdcContract_set.approve(
         controllerAddress,
-        MAX_ALLOWANCE
-      );
+        MAX_ALLOWANCE,
+      )
 
-      console.log(approved);
-      await approved.wait();
-      this.showusdcapproval = false;
+      console.log(approved)
+      await approved.wait()
+      this.showusdcapproval = false
     },
 
     async claimSCF() {
-      const { controllerContract } = await setContract();
+      const { controllerContract } = await setContract()
 
       const claimed = await controllerContract.claim({
         gasLimit: 700000,
-      });
+      })
 
-      console.log(claimed);
+      console.log(claimed)
     },
   },
   async mounted() {
-    const addr = this.address;
+    const addr = this.address
 
-    const unixTime = Math.round(new Date().getTime() / 1000);
-    this.timex = unixTime;
+    const unixTime = Math.round(new Date().getTime() / 1000)
+    this.timex = unixTime
 
-    const pendingBal = await controllerContract.pendingBal(addr);
-    this.pendingBal = parseFloat(formatEth(pendingBal, 18)).toFixed(4);
+    const pendingBal = await controllerContract.pendingBal(addr)
+    this.pendingBal = parseFloat(formatEth(pendingBal, 18)).toFixed(4)
 
-    const pendingTime = await controllerContract.pendingTime(addr);
-    this.pendingTime = parseInt(pendingTime);
+    const pendingTime = await controllerContract.pendingTime(addr)
+    this.pendingTime = parseInt(pendingTime)
 
-    const { usdtContract, usdcContract } = await setContract();
-    const usdtBalance = await usdtContract.balanceOf(addr);
-    const usdcBalance = await usdcContract.balanceOf(addr);
-    const scfBalance = await scfContract.balanceOf(addr);
+    const { usdtContract, usdcContract } = await setContract()
+    const usdtBalance = await usdtContract.balanceOf(addr)
+    const usdcBalance = await usdcContract.balanceOf(addr)
+    const scfBalance = await scfContract.balanceOf(addr)
 
-    this.usdtBalance = parseFloat(formatEth(usdtBalance, 6)).toFixed(4);
-    this.usdcBalance = parseFloat(formatEth(usdcBalance, 6)).toFixed(4);
-    this.scfBalance = parseFloat(formatEth(scfBalance, 18)).toFixed(4);
+    this.usdtBalance = parseFloat(formatEth(usdtBalance, 6)).toFixed(4)
+    this.usdcBalance = parseFloat(formatEth(usdcBalance, 6)).toFixed(4)
+    this.scfBalance = parseFloat(formatEth(scfBalance, 18)).toFixed(4)
   },
-};
+}
 </script>

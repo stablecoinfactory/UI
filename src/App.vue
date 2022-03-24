@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <div
-      class="container mx-auto flex flex-col flex-wrap items-center justify-between py-5 md:flex-row h-40"
+      class="max-w-8xl container mx-auto flex flex-col items-center justify-between pt-5 lg:flex-row h-30"
     >
-      <div class="inline-flex items-center ml-5 space-x-6">
-        <nav
-          class="flex flex-wrap items-center mb-5 text-xl text-gray-600 hover:text-gray-900 text-gradient"
+      <nav
+        class="flex flex-col lg:flex-row items-center mb-5 text-xl text-gray-600 hover:text-gray-900 text-gradient"
+      >
+        <router-link
+          to="/"
+          class="lg:mr-10 font-bold leading-6 text-3xl text-gray-900 text-center"
         >
-          <router-link
-            to="/"
-            class="mr-10 font-bold leading-6 text-3xl text-gray-900"
-          >
-            STABLE COIN FACTORY
-          </router-link>
+          STABLE COIN FACTORY
+        </router-link>
+        <div class="mt-4 lg:mt-0">
           <router-link to="/faq" class="mr-5 font-medium leading-6 underline">
             FAQs
           </router-link>
@@ -22,41 +22,39 @@
           >
             Contact
           </router-link>
-        </nav>
-      </div>
+        </div>
+      </nav>
 
-      <div class="inline-flex items-center ml-5 space-x-6 lg:justify-end">
-        <nav class="flex flex-wrap items-center mb-5 text-xl">
-          <div
-            v-if="isDapp"
-            class="inline-flex items-center leading-none rounded-full p-2 text-teal text-sm hidden md:block"
+      <nav class="flex flex-wrap items-center mb-5">
+        <div
+          v-if="isDapp"
+          class="flex flex-col lg:flex-row items-center leading-none rounded-full p-2 text-teal md:block"
+        >
+          <span
+            class="text-xs lg:text-sm bg-gray-700 text-white rounded-full py-2 px-3 justify-center items-center"
           >
-            <span
-              class="inline-flex bg-gray-700 text-white rounded-full h-6 px-3 justify-center items-center"
-            >
-              POLYGON
-            </span>
-            <span v-if="address" class="inline-flex px-2 text-gray-700">
-              {{ address }}
-            </span>
-          </div>
+            POLYGON
+          </span>
+          <span v-if="address" class="p-2 text-gray-700 text-xs lg:text-sm">
+            {{ address }}
+          </span>
+        </div>
 
-          <router-link
-            to="dapp"
-            v-if="!isDapp"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-semibold rounded-full text-sm px-5 py-3 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Go to DApp
-          </router-link>
-          <a
-            v-if="!isDapp"
-            href="https://t.me/scftg"
-            class="py-3 px-5 mr-2 mb-2 text-sm font-semibold text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          >
-            Telegram
-          </a>
-        </nav>
-      </div>
+        <router-link
+          to="dapp"
+          v-if="!isDapp"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-semibold rounded-full text-sm px-5 py-3 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Go to DApp
+        </router-link>
+        <a
+          v-if="!isDapp"
+          href="https://t.me/scftg"
+          class="py-3 px-5 mr-2 mb-2 text-sm font-semibold text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        >
+          Telegram
+        </a>
+      </nav>
     </div>
 
     <UserData v-bind:address="address" v-if="isDapp && showuserpanel" />
@@ -110,20 +108,27 @@ export default {
   components: {
     UserData,
   },
-  async mounted() {
-    try {
-      const provider = await detectEthereumProvider();
-      if (provider) {
-        this.metamask = true;
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        this.address = accounts[0];
-        this.showuserpanel = true;
+  watch: {
+    $route: "listenRoute",
+  },
+  methods: {
+    async listenRoute() {
+      if (this.$route.name === "Dapp") {
+        try {
+          const provider = await detectEthereumProvider();
+          if (provider) {
+            this.metamask = true;
+            const accounts = await window.ethereum.request({
+              method: "eth_requestAccounts",
+            });
+            this.address = accounts[0];
+            this.showuserpanel = true;
+          }
+        } catch (error) {
+          console.log(error);
+        }
       }
-    } catch (error) {
-      console.log(error);
-    }
+    },
   },
 };
 </script>

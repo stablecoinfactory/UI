@@ -40,19 +40,20 @@
           </span>
         </div>
 
-        <router-link
-          to="dapp"
-          v-if="!isDapp"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-semibold rounded-full text-sm px-5 py-3 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Go to DApp
-        </router-link>
+ 
         <a
           v-if="!isDapp"
           href="https://t.me/scftg"
           class="py-3 px-5 mr-2 mb-2 text-sm font-semibold text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
         >
           Telegram
+        </a>
+           <a
+          v-if="!isDapp"
+          href="https://stablecoinfactory.medium.com/"
+          class="py-3 px-5 mr-2 mb-2 text-sm font-semibold text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        >
+          Medium
         </a>
       </nav>
     </div>
@@ -90,45 +91,45 @@
 </template>
 
 <script>
-import detectEthereumProvider from "@metamask/detect-provider";
-import UserData from "@/components/UserData.vue";
+import detectEthereumProvider from '@metamask/detect-provider'
+import UserData from '@/components/UserData.vue'
 
 export default {
   data() {
     return {
-      address: "",
+      address: '',
       showuserpanel: false,
-    };
+    }
   },
   computed: {
     isDapp() {
-      return this.$route.name === "Dapp";
+      return this.$route.name === 'Dapp'
     },
   },
   components: {
     UserData,
   },
   watch: {
-    $route: "listenRoute",
+    $route: 'listenRoute',
   },
   methods: {
     async listenRoute() {
-      if (this.$route.name === "Dapp") {
+      if (this.$route.name === 'Dapp') {
         try {
-          const provider = await detectEthereumProvider();
+          const provider = await detectEthereumProvider()
           if (provider) {
-            this.metamask = true;
+            this.metamask = true
             const accounts = await window.ethereum.request({
-              method: "eth_requestAccounts",
-            });
-            this.address = accounts[0];
-            this.showuserpanel = true;
+              method: 'eth_requestAccounts',
+            })
+            this.address = accounts[0]
+            this.showuserpanel = true
           }
         } catch (error) {
-          console.log(error);
+          console.log(error)
         }
       }
     },
   },
-};
+}
 </script>

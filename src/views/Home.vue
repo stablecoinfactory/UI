@@ -24,11 +24,11 @@
         <div
           class="relative flex flex-col justify-center md:flex-row md:space-x-4 font-semibold py-8"
         >
-          <a
-            href="https://app.uniswap.org/#/swap?chain=polygon&outputCurrency=0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
+          <router-link
+            to="dapp"
             class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-blue-700 rounded-md md:mb-0 hover:bg-blue-800 md:w-auto"
           >
-            Uniswap
+            DAPP
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-5 h-5 ml-1"
@@ -42,12 +42,12 @@
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
-          </a>
+          </router-link>
           <a
-            href="https://info.uniswap.org/#/polygon/tokens/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
+            href="https://app.uniswap.org/#/swap?chain=polygon&outputCurrency=0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
             class="flex items-center px-6 py-3 text-blue-500 bg-gray-50 rounded-md hover:bg-gray-100 hover:text-blue-600"
           >
-            Uniswap Chart
+            UNISWAP
           </a>
         </div>
       </div>

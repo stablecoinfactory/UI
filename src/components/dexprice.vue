@@ -36,9 +36,8 @@ export default {
       var USDT = '0xc2132D05D31c914a87C6611C10748AEb04B58e8F'
       var USDC = '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
       var MATIC = '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270'
-      var ETH = '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619'
 
-      const rand = Math.floor(Math.random() * 4)
+      const rand = Math.floor(Math.random() * 3)
       console.log(rand)
 
       if (rand == 0) {
@@ -54,11 +53,6 @@ export default {
       if (rand == 2) {
         const data = await getData(MATIC)
         this.showPrice = data + ' MATIC'
-      }
-
-      if (rand == 3) {
-        const data = await getData(ETH)
-        this.showPrice = data + ' ETH'
       }
     },
   },

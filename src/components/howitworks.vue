@@ -49,7 +49,10 @@
     </section>
     <section class="mt-24 rounded-xl overflow-hidden shadow-lg bg-white">
       <video controls autoplay>
-        <source src="lasthd.mp4" type="video/mp4" />
+        <source
+          src="https://bafybeigoqn5j4fa4u7zziibhkhqcsuwmdnauafyaejuumm5zpfaxmyhjva.ipfs.infura-ipfs.io/"
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
     </section>

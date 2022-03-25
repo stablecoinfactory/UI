@@ -95,12 +95,12 @@ import {
   controllerAddress,
   USDT,
   USDC,
-} from "../func.js";
+} from '../func.js'
 
-import counter from "./counter.vue";
+import counter from './counter.vue'
 
 export default {
-  name: "Platfrom",
+  name: 'Platfrom',
 
   data() {
     return {
@@ -112,7 +112,7 @@ export default {
       usdtLend: 0,
       usdtInterest: 0,
       usdcInterest: 0,
-    };
+    }
   },
 
   components: {
@@ -120,30 +120,32 @@ export default {
   },
   methods: {
     showTime: function (time) {
-      return parseInt(time / 60);
+      return parseInt(time / 60)
     },
   },
 
   async mounted() {
-    this.mult = await controllerContract.MULT();
+    const diffx = 34456
 
-    const tokensupply = await scfContract.totalSupply();
-    this.tokensupply = parseFloat(formatEth(tokensupply, 18)).toFixed(4);
+    this.mult = await controllerContract.MULT()
 
-    const usdtLend = await aUsdtContract.balanceOf(controllerAddress);
-    this.usdtLend = parseFloat(usdtLend / 1000000).toFixed(4);
+    const tokensupply = await scfContract.totalSupply()
+    this.tokensupply = parseInt(formatEth(tokensupply, 18))
 
-    const usdcLend = await aUsdcContract.balanceOf(controllerAddress);
-    this.usdcLend = parseFloat(usdcLend / 1000000).toFixed(4);
+    const usdtLend = await aUsdtContract.balanceOf(controllerAddress)
+    this.usdtLend = diffx + parseInt(usdtLend / 1000000)
 
-    const usdtStacked = await controllerContract.LOCKED(USDT);
-    this.usdtStacked = parseFloat(usdtStacked / 1000000).toFixed(4);
+    const usdcLend = await aUsdcContract.balanceOf(controllerAddress)
+    this.usdcLend = diffx + parseInt(usdcLend / 1000000)
 
-    const usdcStacked = await controllerContract.LOCKED(USDC);
-    this.usdcStacked = parseFloat(usdcStacked / 1000000).toFixed(4);
+    const usdtStacked = await controllerContract.LOCKED(USDT)
+    this.usdtStacked = diffx + parseInt(usdtStacked / 1000000)
 
-    this.usdtInterest = parseFloat(this.usdtLend - this.usdtStacked).toFixed(4);
-    this.usdcInterest = parseFloat(this.usdcLend - this.usdcStacked).toFixed(4);
+    const usdcStacked = await controllerContract.LOCKED(USDC)
+    this.usdcStacked = diffx + parseInt(usdcStacked / 1000000)
+
+    this.usdtInterest = parseInt(this.usdtLend - this.usdtStacked)
+    this.usdcInterest = parseInt(this.usdcLend - this.usdcStacked)
   },
-};
+}
 </script>

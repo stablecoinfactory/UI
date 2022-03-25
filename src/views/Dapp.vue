@@ -71,9 +71,6 @@ export default {
     deposits: [],
   }),
   async mounted() {
-
-
-    
     const depositsRes = await axios({
       url: "https://api.thegraph.com/subgraphs/name/stablecoinfactory/scf-graph",
       method: "POST",

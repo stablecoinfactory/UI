@@ -48,8 +48,8 @@
       </article>
     </section>
     <section class="mt-24 rounded-xl overflow-hidden shadow-lg bg-white">
-      <video controls>
-        <source src="../assets/lasthd.mp4" type="video/mp4" />
+      <video controls autoplay>
+        <source src="lasthd.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </section>

@@ -20,7 +20,7 @@ async function getData(var1) {
         '&sellAmount=1000000000000000000',
     )
     .then(function (response) {
-      return parseFloat(response.data.price).toFixed(8)
+      return parseFloat(response.data.price).toFixed(6)
     })
 }
 

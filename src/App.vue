@@ -79,9 +79,6 @@
           >
             POLYGON
           </span>
-          <span v-if="address" class="p-2 text-gray-700 text-xs lg:text-sm">
-            {{ address }}
-          </span>
         </div>
       </nav>
     </div>

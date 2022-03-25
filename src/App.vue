@@ -91,7 +91,7 @@
       <div
         class="mx-auto flex w-full max-w-7xl flex-col-reverse items-center justify-between space-y-6 space-y-reverse px-4 py-10 text-md font-medium text-gray-500 sm:flex-row sm:items-start sm:space-y-0"
       >
-        <div class="flex items-center space-x-4">
+        <div class="mx-auto">
           <p>STABLE COIN FACTORY © 2022.</p>
         </div>
       </div>
@@ -100,20 +100,20 @@
 </template>
 
 <script>
-import UserData from '@/components/UserData.vue'
+import UserData from "@/components/UserData.vue";
 
 export default {
   data() {
-    return {}
+    return {};
   },
   computed: {
     isDapp() {
-      return this.$route.name === 'Dapp'
+      return this.$route.name === "Dapp";
     },
   },
   components: {
     UserData,
   },
   async mounted() {},
-}
+};
 </script>

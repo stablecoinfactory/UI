@@ -48,7 +48,7 @@
       </article>
     </section>
     <section class="mt-24 rounded-xl overflow-hidden shadow-lg bg-white">
-      <video controls autoplay>
+      <video controls>
         <source
           src="https://bafybeigoqn5j4fa4u7zziibhkhqcsuwmdnauafyaejuumm5zpfaxmyhjva.ipfs.infura-ipfs.io/"
           type="video/mp4"

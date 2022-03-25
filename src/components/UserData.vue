@@ -1,6 +1,19 @@
 <template>
   <div>
-    <div class="container mx-auto max-w-7xl px-5">
+    <div class="container mx-auto max-w-7xl px-5" v-if="!showuserpanel">
+      <div class="py-8">
+        <div class="flex md:flex-row flex-col items-center">
+          <div
+            class="text-center p-4 mb-4 text-md text-red-700 bg-red-200 rounded-lg w-full"
+            role="alert"
+          >
+            Install WEB3 Wallet/Browser to display your status.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto max-w-7xl px-5" v-if="showuserpanel">
       <div class="py-8">
         <div
           class="p-6 bg-white rounded-xl shadow-xl hover:shadow-xl transform hover:scale-105 transition duration-500 max-w-3xl mx-auto"
@@ -137,6 +150,8 @@
 </template>
 
 <script>
+import detectEthereumProvider from '@metamask/detect-provider'
+
 import { ethers } from 'ethers'
 import {
   controllerContract,
@@ -154,12 +169,11 @@ import { format } from 'timeago.js'
 
 export default {
   name: 'UserData',
-  props: {
-    address: String,
-  },
   components: {},
   data() {
     return {
+      showuserpanel: false,
+      address: '',
       timex: 0,
       pendingBal: 0,
       pendingTime: 0,
@@ -257,6 +271,25 @@ export default {
     },
   },
   async mounted() {
+    const provider_test = await detectEthereumProvider()
+    console.log(provider_test)
+
+    try {
+      const provider = await detectEthereumProvider()
+
+      if (provider) {
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        })
+
+        this.address = accounts[0]
+
+        this.showuserpanel = true
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
     const addr = this.address
 
     const unixTime = Math.round(new Date().getTime() / 1000)

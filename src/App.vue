@@ -86,23 +86,7 @@
       </nav>
     </div>
 
-    <UserData v-bind:address="address" v-if="isDapp && showuserpanel" />
-
-    <div
-      class="container mx-auto max-w-7xl px-5"
-      v-if="isDapp && !showuserpanel"
-    >
-      <div class="py-8">
-        <div class="flex md:flex-row flex-col items-center">
-          <div
-            class="text-center p-4 mb-4 text-md text-red-700 bg-red-200 rounded-lg w-full"
-            role="alert"
-          >
-            Install WEB3 Wallet/Browser to display your status.
-          </div>
-        </div>
-      </div>
-    </div>
+    <UserData v-if="isDapp" />
 
     <router-view />
 
@@ -119,15 +103,11 @@
 </template>
 
 <script>
-import detectEthereumProvider from '@metamask/detect-provider'
 import UserData from '@/components/UserData.vue'
 
 export default {
   data() {
-    return {
-      address: '',
-      showuserpanel: false,
-    }
+    return {}
   },
   computed: {
     isDapp() {
@@ -137,20 +117,6 @@ export default {
   components: {
     UserData,
   },
-  async mounted() {
-    try {
-      const provider = await detectEthereumProvider()
-      if (provider) {
-        this.metamask = true
-        const accounts = await window.ethereum.request({
-          method: 'eth_requestAccounts',
-        })
-        this.address = accounts[0]
-        this.showuserpanel = true
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  },
+  async mounted() {},
 }
 </script>

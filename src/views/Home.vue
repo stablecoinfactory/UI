@@ -19,7 +19,7 @@
         >
           Automated algorithmic lending collateralization platform built for
           stable dollar cryptocurrencies. Governed by users and market
-          conditions, rewarding users with exponential gains.
+          conditions, powered by AAVE & Uniswap.
         </p>
         <div
           class="relative flex flex-col justify-center md:flex-row md:space-x-4 font-semibold py-8"

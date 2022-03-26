@@ -58,7 +58,7 @@
         class="flex items-center justify-center space-x-8 lg:space-x-24 mx-8"
       >
         <a
-          href="https://matcha.xyz/markets/137/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
+          href="https://matcha.xyz/markets/137/0x7075f7b8d36998c4429fc43d20ce41f2a3c7ef9a/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
         >
           <img src="img/matcha.png" class="block object-contain h-14"
         /></a>

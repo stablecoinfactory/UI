@@ -153,6 +153,7 @@
 import detectEthereumProvider from '@metamask/detect-provider'
 
 import { ethers } from 'ethers'
+
 import {
   controllerContract,
   controllerAddress,
@@ -271,9 +272,6 @@ export default {
     },
   },
   async mounted() {
-    const provider_test = await detectEthereumProvider()
-    console.log(provider_test)
-
     try {
       const provider = await detectEthereumProvider()
 

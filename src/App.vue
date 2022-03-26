@@ -100,20 +100,31 @@
 </template>
 
 <script>
-import UserData from "@/components/UserData.vue";
+import detectEthereumProvider from '@metamask/detect-provider'
+
+import UserData from '@/components/UserData.vue'
 
 export default {
   data() {
-    return {};
+    return {}
   },
   computed: {
     isDapp() {
-      return this.$route.name === "Dapp";
+      return this.$route.name === 'Dapp'
     },
   },
   components: {
     UserData,
   },
-  async mounted() {},
-};
+  async mounted() {
+    const provider_test = await detectEthereumProvider()
+    console.log(provider_test)
+
+    const accounts = await window.ethereum.request({
+      method: 'eth_requestAccounts',
+    })
+
+    console.log(accounts)
+  },
+}
 </script>

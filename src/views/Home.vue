@@ -75,6 +75,16 @@
           <img src="img/polyscan.png" class="block object-contain h-10" />
         </a>
       </div>
+      <div
+        class="flex items-center justify-center space-x-8 lg:space-x-24 mx-8 mt-16"
+      >
+        <a href="#">
+          <img src="img/coingecko.png" class="block object-contain h-10" />
+        </a>
+        <a href="#">
+          <img src="img/coinmarketcap.png" class="block object-contain h-10" />
+        </a>
+      </div>
     </div>
 
     <Price />

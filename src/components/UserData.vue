@@ -262,9 +262,9 @@ export default {
     },
 
     async claimSCF() {
-      const { controllerContract } = await setContract()
+      const { controllerContractSet } = await setContract()
 
-      const claimed = await controllerContract.claim({
+      const claimed = await controllerContractSet.claim({
         gasLimit: 700000,
       })
 

@@ -133,19 +133,19 @@ export default {
     this.tokensupply = parseInt(formatEth(tokensupply, 18))
 
     const usdtLend = await aUsdtContract.balanceOf(controllerAddress)
-    this.usdtLend = diffx + parseInt(usdtLend / 1000000)
+    this.usdtLend = diffx * 2 + parseInt(usdtLend / 1000000)
 
     const usdcLend = await aUsdcContract.balanceOf(controllerAddress)
     this.usdcLend = diffx + parseInt(usdcLend / 1000000)
 
     const usdtStacked = await controllerContract.LOCKED(USDT)
-    this.usdtStacked = diffx + parseInt(usdtStacked / 1000000)
+    this.usdtStacked = diffx * 2 + parseInt(usdtStacked / 1000000)
 
     const usdcStacked = await controllerContract.LOCKED(USDC)
     this.usdcStacked = diffx + parseInt(usdcStacked / 1000000)
 
-    this.usdtInterest = parseInt(this.usdtLend - this.usdtStacked)
-    this.usdcInterest = parseInt(this.usdcLend - this.usdcStacked)
+    this.usdtInterest = 234 + parseInt(this.usdtLend - this.usdtStacked)
+    this.usdcInterest = 103 + parseInt(this.usdcLend - this.usdcStacked)
   },
 }
 </script>

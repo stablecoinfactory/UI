@@ -17,7 +17,7 @@
         <p
           class="w-full mx-auto text-base text-left text-gray-500 md:max-w-md sm:text-lg lg:text-2xl md:max-w-3xl md:text-center"
         >
-          Automated algorithmic lending collateralization platform built for
+          Automated algorithmic collateralization platform built for
           stable dollar cryptocurrencies. Governed by users and market
           conditions, powered by AAVE & Uniswap.
         </p>

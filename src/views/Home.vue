@@ -17,9 +17,9 @@
         <p
           class="w-full mx-auto text-base text-left text-gray-500 md:max-w-md sm:text-lg lg:text-2xl md:max-w-3xl md:text-center"
         >
-          Automated algorithmic collateralization platform built for
-          stable dollar cryptocurrencies. Governed by users and market
-          conditions, powered by AAVE & Uniswap.
+          Automated algorithmic collateralization platform built for stable
+          dollar cryptocurrencies. Governed by users and market conditions,
+          powered by AAVE & Uniswap.
         </p>
         <div
           class="relative flex flex-col justify-center md:flex-row md:space-x-4 font-semibold py-8"
@@ -60,14 +60,14 @@
         <a
           href="https://matcha.xyz/markets/137/0x7075f7b8d36998c4429fc43d20ce41f2a3c7ef9a/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
         >
-          <img src="img/matcha.png" class="block object-contain h-14"
-        /></a>
+          <img src="img/matcha.png" class="block object-contain h-14" />
+        </a>
 
         <a
           href="https://info.uniswap.org/#/polygon/tokens/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
         >
-          <img src="img/uniswap.png" class="block object-contain h-12"
-        /></a>
+          <img src="img/uniswap.png" class="block object-contain h-12" />
+        </a>
 
         <a
           href="https://polygonscan.com/token/0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a"
@@ -92,22 +92,27 @@
     <Platfrom />
 
     <Howitworks />
+
+    <Medium />
   </div>
 </template>
 
 <script>
-import Platfrom from "../components/Platfrom.vue";
+import Platfrom from '../components/Platfrom.vue'
 
-import Howitworks from "../components/howitworks.vue";
+import Howitworks from '../components/howitworks.vue'
 
-import Price from "../components/dexprice.vue";
+import Price from '../components/dexprice.vue'
+
+import Medium from '../components/medium.vue'
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Platfrom,
     Howitworks,
     Price,
+    Medium,
   },
-};
+}
 </script>

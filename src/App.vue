@@ -18,6 +18,10 @@
             FAQ
           </router-link>
 
+          <router-link to="/guide" class="mr-5 font-medium leading-6">
+            GUIDE
+          </router-link>
+
           <router-link to="/contact" class="mr-5 font-medium leading-6">
             CONTACT
           </router-link>

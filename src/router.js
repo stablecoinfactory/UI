@@ -5,6 +5,7 @@ import Home from './views/Home.vue'
 import FAQ from './views/Faq.vue'
 import Contact from './views/Contact.vue'
 import Dapp from './views/Dapp.vue'
+import Guide from './views/Guide.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,10 @@ const routes = [
     path: '/contact',
     name: 'Contact',
     component: Contact,
+  }, {
+    path: '/guide',
+    name: 'Guide',
+    component: Guide,
   },
 ]
 

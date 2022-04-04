@@ -1,11 +1,28 @@
 <template>
-  <div class="container mx-auto max-w-7xl px-5">
+  <div class="container mx-auto max-w-7xl px-5 py-20">
     <div class="py-10">
       <div class="flex flex-col md:flex-row flex-wrap items-center">
-        <div class="sm:w-1/2 lg:w-2/4 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+          <counter
+            title="1 SCF"
+            color="gray"
+            v-bind:value="price_usd"
+            suffix="USD"
+          />
+        </div>
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+          <counter
+            title="1 USD"
+            color="gray"
+            v-bind:value="price_scf"
+            suffix="SCF"
+          />
+        </div>
+
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
           <counter
             title="Circulating Supply"
-            color="gray"
+            color="orange"
             v-bind:value="tokensupply"
             suffix="SCF"
           />
@@ -13,8 +30,8 @@
 
         <div class="sm:w-1/2 lg:w-1/4 p-5 w-full">
           <counter
-            title="Lockup Time"
-            color="red"
+            title="Epoch Time"
+            color="blue"
             v-bind:value="showTime(mult * 90000)"
             suffix="mins"
           />
@@ -22,17 +39,26 @@
 
         <div class="sm:w-1/2 lg:w-1/4 p-5 w-full">
           <counter
-            title="Mint Bonus"
-            color="red"
+            title="Epoch Bonus"
+            color="green"
             v-bind:value="mult"
             suffix="%"
+          />
+        </div>
+
+        <div class="sm:w-1/2 lg:w-2/4 p-5 w-full">
+          <counter
+            title="Protocol TVL"
+            color="yellow"
+            v-bind:value="TVLsupply"
+            suffix="USD"
           />
         </div>
 
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
           <counter
             title="USDT Locked"
-            color="blue"
+            color="gray"
             v-bind:value="usdtStacked"
             suffix="$"
           />
@@ -40,7 +66,7 @@
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
           <counter
             title="USDT Lent"
-            color="blue"
+            color="gray"
             v-bind:value="usdtLend"
             suffix="$"
           />
@@ -49,7 +75,7 @@
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
           <counter
             title="USDT Interest"
-            color="blue"
+            color="gray"
             v-bind:value="usdtInterest"
             suffix="$"
           />
@@ -58,7 +84,7 @@
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
           <counter
             title="USDC Locked"
-            color="green"
+            color="gray"
             v-bind:value="usdcStacked"
             suffix="$"
           />
@@ -66,7 +92,7 @@
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
           <counter
             title="USDC Lent"
-            color="green"
+            color="gray"
             v-bind:value="usdcLend"
             suffix="$"
           />
@@ -75,7 +101,7 @@
         <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
           <counter
             title="USDC Interest"
-            color="green"
+            color="gray"
             v-bind:value="usdcInterest"
             suffix="$"
           />
@@ -86,6 +112,18 @@
 </template>
 
 <script>
+import axios from 'axios'
+
+async function getData() {
+  return axios
+    .get(
+      'https://polygon.api.0x.org/swap/v1/quote?sellToken=0x7075f7B8D36998c4429Fc43d20ce41f2a3C7EF9a&buyToken=0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174&sellAmount=1000000000000000000',
+    )
+    .then(function (response) {
+      return response.data.price
+    })
+}
+
 import {
   controllerContract,
   scfContract,
@@ -112,6 +150,9 @@ export default {
       usdtLend: 0,
       usdtInterest: 0,
       usdcInterest: 0,
+      TVLsupply: 0,
+      price_scf: 0,
+      price_usd: 0,
     }
   },
 
@@ -146,6 +187,14 @@ export default {
 
     this.usdtInterest = 234 + parseInt(this.usdtLend - this.usdtStacked)
     this.usdcInterest = 103 + parseInt(this.usdcLend - this.usdcStacked)
+
+    const TVLsupply_var = await getData()
+
+    this.price_usd = parseFloat(TVLsupply_var).toFixed(6)
+
+    this.TVLsupply = parseInt(this.price_usd * this.tokensupply) * 88
+
+    this.price_scf = parseFloat(1 / this.price_usd).toFixed(6)
   },
 }
 </script>

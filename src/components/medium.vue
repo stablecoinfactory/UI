@@ -3,7 +3,7 @@
     <div class="container mx-auto max-w-7xl px-5 py-32">
       <div class="py-5">
         <p class="uppercase m-4 text-4xl text-gray-700 text-medium">
-          Recent Posts
+          BLOG
         </p>
       </div>
 
@@ -13,7 +13,7 @@
             class="mx-auto w-full shadow-2xl transform duration-500 hover:-translate-y-2 cursor-pointer bg-white"
           >
             <div class="min-h-80 overflow-hidden">
-              <img class="h-80" v-bind:src="posts[0].thumbnail" />
+              <img style="object-fit: cover;" v-bind:src="posts[0].thumbnail" />
             </div>
             <div class="flex justify-between">
               <p class="m-4 text-xl text-gray-700">{{ posts[0].title }}</p>
@@ -26,7 +26,7 @@
             class="mx-auto w-full shadow-2xl transform duration-500 hover:-translate-y-2 cursor-pointer bg-white"
           >
             <div class="min-h-80 overflow-hidden">
-              <img class="h-80" v-bind:src="posts[1].thumbnail" />
+              <img style="object-fit: cover;" v-bind:src="posts[1].thumbnail" />
             </div>
             <div class="flex justify-between">
               <p class="m-4 text-xl text-gray-700">{{ posts[1].title }}</p>
@@ -34,15 +34,15 @@
           </article>
         </a>
 
-        <a v-bind:href="posts[2].link" target="_blank">
+        <a v-bind:href="posts[1].link" target="_blank">
           <article
             class="mx-auto w-full shadow-2xl transform duration-500 hover:-translate-y-2 cursor-pointer bg-white"
           >
             <div class="min-h-80 overflow-hidden">
-              <img class="h-80" v-bind:src="posts[2].thumbnail" />
+              <img style="object-fit: cover;" v-bind:src="posts[1].thumbnail" />
             </div>
             <div class="flex justify-between">
-              <p class="m-4 text-xl text-gray-700">{{ posts[2].title }}</p>
+              <p class="m-4 text-xl text-gray-700">{{ posts[1].title }}</p>
             </div>
           </article>
         </a>

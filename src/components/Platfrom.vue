@@ -194,7 +194,7 @@ export default {
 
     this.TVLsupply = parseInt(this.price_usd * this.tokensupply) * 88
 
-    this.price_scf = parseFloat(1 / this.price_usd).toFixed(6)
+    this.price_scf = parseFloat(1 / this.price_usd).toFixed(2)
   },
 }
 </script>

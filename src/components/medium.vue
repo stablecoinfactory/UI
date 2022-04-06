@@ -34,15 +34,15 @@
           </article>
         </a>
 
-        <a v-bind:href="posts[1].link" target="_blank">
+        <a v-bind:href="posts[2].link" target="_blank">
           <article
             class="mx-auto w-full shadow-2xl transform duration-500 hover:-translate-y-2 cursor-pointer bg-white"
           >
             <div class="min-h-80 overflow-hidden">
-              <img style="object-fit: cover;" v-bind:src="posts[1].thumbnail" />
+              <img style="object-fit: cover;" v-bind:src="posts[2].thumbnail" />
             </div>
             <div class="flex justify-between">
-              <p class="m-4 text-xl text-gray-700">{{ posts[1].title }}</p>
+              <p class="m-4 text-xl text-gray-700">{{ posts[2].title }}</p>
             </div>
           </article>
         </a>

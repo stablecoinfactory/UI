@@ -2,7 +2,7 @@
   <div class="container mx-auto max-w-7xl px-5 py-20">
     <div class="py-10">
       <div class="flex flex-col md:flex-row flex-wrap items-center">
-        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full" v-if="price_usd > 0">
           <counter
             title="1 SCF"
             color="gray"
@@ -10,7 +10,7 @@
             suffix="USD"
           />
         </div>
-        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full"  v-if="price_scf > 0">
           <counter
             title="1 USD"
             color="gray"
@@ -19,7 +19,7 @@
           />
         </div>
 
-        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full"  v-if="tokensupply > 0">
           <counter
             title="Circulating Supply"
             color="orange"
@@ -28,7 +28,7 @@
           />
         </div>
 
-        <div class="sm:w-1/2 lg:w-1/4 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/4 p-5 w-full"  v-if="mult > 0">
           <counter
             title="Epoch Time"
             color="blue"
@@ -37,7 +37,7 @@
           />
         </div>
 
-        <div class="sm:w-1/2 lg:w-1/4 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/4 p-5 w-full"  v-if="mult > 0">
           <counter
             title="Epoch Bonus"
             color="green"
@@ -46,7 +46,7 @@
           />
         </div>
 
-        <div class="sm:w-1/2 lg:w-2/4 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-2/4 p-5 w-full"  v-if="TVLsupply > 0">
           <counter
             title="Protocol TVL"
             color="yellow"
@@ -55,7 +55,7 @@
           />
         </div>
 
-        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full"  v-if="usdtStacked > 0">
           <counter
             title="USDT Locked"
             color="gray"
@@ -63,7 +63,7 @@
             suffix="$"
           />
         </div>
-        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full"  v-if="usdtLend > 0">
           <counter
             title="USDT Lent"
             color="gray"
@@ -72,7 +72,7 @@
           />
         </div>
 
-        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full"  v-if="usdtInterest > 0">
           <counter
             title="USDT Interest"
             color="gray"
@@ -81,7 +81,7 @@
           />
         </div>
 
-        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full"  v-if="usdcStacked > 0">
           <counter
             title="USDC Locked"
             color="gray"
@@ -89,7 +89,7 @@
             suffix="$"
           />
         </div>
-        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full"  v-if="usdcLend > 0">
           <counter
             title="USDC Lent"
             color="gray"
@@ -98,7 +98,7 @@
           />
         </div>
 
-        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full">
+        <div class="sm:w-1/2 lg:w-1/3 p-5 w-full"  v-if="usdcInterest > 0">
           <counter
             title="USDC Interest"
             color="gray"

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100">
+  <div class="bg-gray-100" v-if="show">
     <div class="container mx-auto max-w-7xl px-5 py-32">
       <div class="py-5">
         <p class="uppercase m-4 text-4xl text-gray-700 text-medium">
@@ -57,6 +57,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      show : false,
       posts: [],
     }
   },
@@ -67,6 +68,7 @@ export default {
       )
 
       this.posts = response.data.items
+      this.show = true
     },
   },
   async mounted() {

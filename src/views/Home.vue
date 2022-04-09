@@ -53,7 +53,7 @@
       </div>
     </section>
 
-    <div class="container mx-auto">
+    <div class="container mx-auto hidden lg:block">
       <div
         class="flex items-center justify-center space-x-8 lg:space-x-24 mx-8"
       >
@@ -90,7 +90,6 @@
     <Howitworks />
 
     <Medium />
-    
   </div>
 </template>
 

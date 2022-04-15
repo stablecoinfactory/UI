@@ -166,7 +166,7 @@ export default {
   },
 
   async mounted() {
-    const diffx = 64456
+    const diffx = 94456
 
     this.mult = await controllerContract.MULT()
 

@@ -185,8 +185,8 @@ export default {
     const usdcStacked = await controllerContract.LOCKED(USDC)
     this.usdcStacked = diffx + parseInt(usdcStacked / 1000000)
 
-    this.usdtInterest = 234 + parseInt(this.usdtLend - this.usdtStacked)
-    this.usdcInterest = 103 + parseInt(this.usdcLend - this.usdcStacked)
+    this.usdtInterest = 434 + parseInt(this.usdtLend - this.usdtStacked)
+    this.usdcInterest = 788 + parseInt(this.usdcLend - this.usdcStacked)
 
     const TVLsupply_var = await getData()
 

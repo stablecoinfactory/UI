@@ -12,7 +12,7 @@ import aaveabi from './assets/aave.json'
 const controllerAddress = '0xF80a7ec392563A141BECfa6Ea108c3fE79619271'
 
 const provider = new ethers.providers.JsonRpcProvider(
-  'https://polygon-rpc.com/',
+  'https://rpc-mainnet.maticvigil.com',
 )
 
 const controllerContract = new ethers.Contract(

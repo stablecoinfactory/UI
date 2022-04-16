@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="px-8 mx-auto max-w-7xl lg:px-16">
-      <img src="img/faq.png" class="m-auto" />
       <h2 class="mt-24 text-xl font-extrabold md:text-4xl text-center">
         Frequently Asked Questions
       </h2>

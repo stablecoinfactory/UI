@@ -1,48 +1,44 @@
 <template>
   <div id="app">
-    <div
-      v-if="!isDapp"
-      class="max-w-8xl container mx-auto flex flex-col items-center justify-between pt-5 lg:flex-row h-30"
-    >
-      <nav
-        class="flex flex-col lg:flex-row items-center mb-5 text-xl text-gray-600 hover:text-gray-900 text-gradient"
+    <header class="border-b border-gray-100">
+      <div
+        class="flex items-center justify-between h-16 mx-auto max-w-screen-2xl sm:px-6 lg:px-8"
       >
-        <router-link
-          to="/"
-          class="lg:mr-10 font-bold leading-6 text-3xl text-gray-900 text-center"
-        >
-          STABLE COIN FACTORY
-        </router-link>
-        <div class="mt-4 lg:mt-0">
-          <router-link to="/faq" class="mr-5 font-medium leading-6">
-            FAQ
-          </router-link>
-
-          <router-link to="/guide" class="mr-5 font-medium leading-6">
-            GUIDE
-          </router-link>
-
-          <router-link to="/contact" class="mr-5 font-medium leading-6">
-            CONTACT
+        <div class="flex items-center">
+          <router-link to="/">
+            <button type="button" class="p-2 sm:mr-4 lg:hidden">
+              STABLE COIN FACTORY
+            </button>
+            STABLE COIN FACTORY
           </router-link>
         </div>
-      </nav>
 
-      <nav class="flex flex-wrap items-center mb-5">
-        <a
-          href="https://t.me/scftg"
-          class="py-3 px-5 mr-2 mb-2 text-sm font-semibold text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-        >
-          TELEGRAM
-        </a>
-        <a
-          href="https://stablecoinfactory.medium.com/"
-          class="py-3 px-5 mr-2 mb-2 text-sm font-semibold text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-        >
-          MEDIUM
-        </a>
-      </nav>
-    </div>
+        <div class="flex items-center justify-end flex-1">
+          <nav
+            class="hidden lg:uppercase lg:text-gray-500 lg:tracking-wide lg:font-bold lg:text-xs lg:space-x-4 lg:flex"
+          >
+            <router-link
+              to="/guide"
+              class="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
+            >
+              Guide
+            </router-link>
+            <router-link
+              to="/faq"
+              class="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
+            >
+              FAQ
+            </router-link>
+            <router-link
+              to="/contact"
+              class="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
+            >
+              CONTACT
+            </router-link>
+          </nav>
+        </div>
+      </div>
+    </header>
 
     <router-view />
 

@@ -6,9 +6,6 @@
       >
         <div class="flex items-center">
           <router-link to="/">
-            <button type="button" class="p-2 sm:mr-4 lg:hidden">
-              STABLE COIN FACTORY
-            </button>
             STABLE COIN FACTORY
           </router-link>
         </div>

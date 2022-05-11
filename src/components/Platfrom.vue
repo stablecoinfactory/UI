@@ -166,7 +166,6 @@ export default {
   },
 
   async mounted() {
-    const diffx = 94456
 
     this.mult = await controllerContract.MULT()
 
@@ -174,25 +173,25 @@ export default {
     this.tokensupply = parseInt(formatEth(tokensupply, 18))
 
     const usdtLend = await aUsdtContract.balanceOf(controllerAddress)
-    this.usdtLend = diffx * 2 + parseInt(usdtLend / 1000000)
+    this.usdtLend =  parseInt(usdtLend / 1000000)
 
     const usdcLend = await aUsdcContract.balanceOf(controllerAddress)
-    this.usdcLend = diffx + parseInt(usdcLend / 1000000)
+    this.usdcLend =   parseInt(usdcLend / 1000000)
 
     const usdtStacked = await controllerContract.LOCKED(USDT)
-    this.usdtStacked = diffx * 2 + parseInt(usdtStacked / 1000000)
+    this.usdtStacked =  parseInt(usdtStacked / 1000000)
 
     const usdcStacked = await controllerContract.LOCKED(USDC)
-    this.usdcStacked = diffx + parseInt(usdcStacked / 1000000)
+    this.usdcStacked =  parseInt(usdcStacked / 1000000)
 
-    this.usdtInterest = 434 + parseInt(this.usdtLend - this.usdtStacked)
-    this.usdcInterest = 788 + parseInt(this.usdcLend - this.usdcStacked)
+    this.usdtInterest = parseInt(this.usdtLend - this.usdtStacked)
+    this.usdcInterest = parseInt(this.usdcLend - this.usdcStacked)
 
     const TVLsupply_var = await getData()
 
     this.price_usd = parseFloat(TVLsupply_var).toFixed(6)
 
-    this.TVLsupply = parseInt(this.price_usd * this.tokensupply) * 88
+    this.TVLsupply = parseInt(this.price_usd * this.tokensupply)
 
     this.price_scf = parseFloat(1 / this.price_usd).toFixed(2)
   },
